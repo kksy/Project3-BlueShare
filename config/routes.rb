@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/' => 'pages#home'
 
 #item
- get '/'
+ # get '/'
 
 
 #about page
