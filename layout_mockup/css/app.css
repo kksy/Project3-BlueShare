@@ -21,3 +21,22 @@ p {
   color: #888;
   font-size: 13px;
 }
+
+/* user dashboard */
+.tabs-container {
+  margin-top: 40px;
+}
+
+/* listing */
+.image-list {
+  margin-top: 20px;
+}
+
+.nav-margin {
+  margin-bottom: 20px;
+}
+
+.highlighted-info {
+  background-color: #008CBA;
+  border-radius: 10px;
+}
