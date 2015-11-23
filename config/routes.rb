@@ -57,7 +57,9 @@ Rails.application.routes.draw do
 
 # home page
   get '/' => 'pages#home'
-
+  
+#about page
+  get '/about' => 'pages#about'
 # resources page called lenders with new,edit,delete pages
   resources :lender
 
