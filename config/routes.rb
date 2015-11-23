@@ -53,4 +53,15 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+# ###################################################################################################
+
+# home page
+  get '/' => 'pages#home'
+
+# resources page called lenders with new,edit,delete pages
+  resources :lender
+
+# resources page called lenders with new,edit,delete pages
+  resources :item
+
 end
