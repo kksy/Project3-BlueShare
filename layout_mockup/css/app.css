@@ -1,0 +1,23 @@
+.tile {
+  padding: 10px;
+  border: 2px solid #efefef;
+  border-radius: 7px;
+  margin-top: 40px;
+}
+
+.item-img img {
+  width: 100%;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+p {
+  color: #888;
+  font-size: 13px;
+}

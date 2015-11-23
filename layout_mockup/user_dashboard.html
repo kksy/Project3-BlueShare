@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+	<meta charset="UTF-8">
+	<title>Project 3</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
 
-    <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
-
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-		
-		<!-- NAVIGATION -->
-		<nav class="top-bar" data-topbar role="navigation">
+	<!-- NAV BAR  -->
+	<nav class="top-bar" data-topbar role="navigation">
 	  <ul class="title-area">
 	    <li class="name">
 	      <h1><a href="#">My Site</a></h1>
@@ -27,13 +21,7 @@
 	  <section class="top-bar-section">
 	    <!-- Right Nav Section -->
 	    <ul class="right">
-	      <li class="has-dropdown">
-	        <a href="#">Right Button Dropdown</a>
-	        <ul class="dropdown">
-	          <li><a href="#">First link in dropdown</a></li>
-	          <li class="active"><a href="#">Active link in dropdown</a></li>
-	        </ul>
-	      </li>
+	      <li><a href="#">Login</a></li>
 	      <li class="active"><a href="#">Create Listing</a></li>
 	    </ul>
 
@@ -53,8 +41,19 @@
 	  </section>
 	</nav>
 
+	<!-- DASHBOARD -->
 
-    <%= yield %>
+	<div class="row">
+		
 
-  </body>
+
+	</div>
+	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/vendor/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+</body>
 </html>
