@@ -1,2 +1,19 @@
 <h1>Items</h1>
-<%= @items %>
+<% @items.each do |item| %>
+
+  <p>
+  <%= item.title %>
+  
+  </p>
+
+<% end %>
+
+
+<form action="/search" method="post">
+
+  <label>Seach for a listing</label>
+  <input type="text" name='seach-input'>
+
+  <button>Search</button>
+
+</form>

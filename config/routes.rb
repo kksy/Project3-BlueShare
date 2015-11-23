@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 # home page
   get '/' => 'pages#home'
 
-#item
- # get '/'
-
+  get '/home' => 'pages#home'
 
 #about page
   get '/about' => 'pages#about'

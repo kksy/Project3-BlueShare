@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
-    @items = Item.all
+    # @items = Item.first.title
+    # render json: @items
   end
 
   def about
@@ -8,6 +9,8 @@ class PagesController < ApplicationController
   end
   
   def search
+    
+    
   end
 
 end
