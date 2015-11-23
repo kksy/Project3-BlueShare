@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   def item_params
