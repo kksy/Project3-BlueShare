@@ -86,6 +86,21 @@
 
   </div>
 
+<script>
+$.ajax(options).done(function(data){
+	_.each(data, function(item){
+
+		var marker = new google.maps.Marker({
+			position: {lat: dish.latitude,lng: dish.longitude},
+			map: map,
+			title: item.title
+		});
+	});
+
+})
+
+</script>
+
 	<script src='js/underscore.js'></script>
 	<script src='js/app.js'></script>
 

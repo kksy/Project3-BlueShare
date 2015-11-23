@@ -11,16 +11,3 @@ var map = new google.maps.Map($('.map')[0],{
     // limit: 5,
     dataType: 'json'
   };
-
-
-  $.ajax(options).done(function(data){
-    _.each(data, function(item){
-
-      var marker = new google.maps.Marker({
-        position: {lat: dish.latitude,lng: dish.longitude},
-        map: map,
-        title: item.title
-      });
-    });
-
-  })

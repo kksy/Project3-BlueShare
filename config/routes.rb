@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
 # home page
   get '/' => 'pages#home'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :items
 
   namespace :api do
-    resources :items only: [:index, :create, :destroy]
+    resources :items, only: [:index, :create, :destroy]
      # resources :ratings only [:index, :create, :destroy]
   end
 end
