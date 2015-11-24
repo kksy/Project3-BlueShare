@@ -11,7 +11,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-
+    @item = Item.find(params[:id])
+    @item.destroy
   end
 
   def item_params
@@ -19,8 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def search
-
-
     @match = Item.all
   end
 
