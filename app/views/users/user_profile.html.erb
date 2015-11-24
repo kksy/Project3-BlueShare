@@ -20,6 +20,38 @@
              <p>Created Account On: <%= current_user.created_at %></p>
              <p>Last Updated Account On: <%= current_user.updated_at %></p>
         </div>
+        
+        <!-- LISTING TEMPORARY LOCATION -->
+        <div class="listing">
+          <h2>Listing</h2>
+          
+          <% @listings.each do |listing| %>
+            <div class="small-4 columns">image here</div>
+            <div class="small-5 columns">
+              <a href="#"><h5><%= listing.title %></h5></a>
+              <p>some description</p>
+            </div>
+            <div class="small-3 columns">
+              <h5><%= listing.price %></h5>
+              <h5 class="<%= listing.loan_status == 'onloan'? 'onloan' : 'available'  %>"><%= listing.loan_status %></h5>
+              <ul class="inline-list">
+                <li>
+                  <form action="<%= edit_item_path(listing.id) %>" method="get">
+                    <button class="button tiny">edit</button>
+                  </form>
+                </li>
+                <li>
+                  <form action="<%= item_path(listing.id) %>" method="delete">
+                    <button class="button tiny alert">Delete</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <hr>
+          <% end %>
+        
+        </div>
+
       </div>
       <div class="content" id="panel2">
         <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
