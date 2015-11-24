@@ -10,8 +10,12 @@ class ItemsController < ApplicationController
     redirect_to '/items'
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def destroy
-    
+
   end
 
   def item_params
