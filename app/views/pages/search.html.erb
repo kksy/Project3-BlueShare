@@ -1,9 +1,63 @@
-<h1>Searched Items</h1>
-<% @.each do |item| %>
-
+<!-- SEARCH -->
+<form class="search-bar" action="/">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" placeholder="search">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button postfix">search</a>
+        </div>
+      </div>
+    </div>
+</form>
   <p>
   <%= item.title %>
 
   </p>
 
 <% end %>
+
+<!-- GOOGLE MAP -->
+<div class="small-12 large-6 columns">
+	<p>map here</p>
+</div>
+
+<!-- SEARCH RESULTS -->
+<div class="small-12 large-6 columns">
+	<h2>Search Results</h2>
+
+	<div class="small-4 columns">image here</div>
+  <div class="small-5 columns">
+  	<a href="#"><h5>Title of the ad</h5></a>
+  	<p>some description</p>
+  </div>
+  <div class="small-3 columns">
+  	<h5>$100</h5>
+  	<p>location</p>
+  </div>
+  <hr>
+
+  <div class="small-4 columns">image here</div>
+  <div class="small-5 columns">
+  	<a href="#"><h5>Title of the ad</h5></a>
+  	<p>some description</p>
+  </div>
+  <div class="small-3 columns">
+  	<h5>$100</h5>
+  	<p>location</p>
+  </div>
+  <hr>
+
+  <div class="small-4 columns">image here</div>
+  <div class="small-5 columns">
+  	<a href="#"><h5>Title of the ad</h5></a>
+  	<p>some description</p>
+  </div>
+  <div class="small-3 columns">
+  	<h5>$100</h5>
+  	<p>location</p>
+  </div>
+  <hr>
+
+</div>
