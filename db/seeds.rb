@@ -17,24 +17,24 @@ Item.delete_all
 
 # Item.create(title: 'big tractor', image_id: 'http://i.ebayimg.com/00/s/NDgwWDY0MA==/z/BF4AAOSwZVhWRTXz/$_75.JPG', loan_status: 'onloan', price: 40.00, report: 'n/a', user_id: 1, location: '3000')
 
-
 # Item.create(title: 'sprayer', image_id: '
 # https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
-
 
 
 for i in 0..10
   item = Item.new
   image = ItemImage.new
-  temp = 'test' + i
-  item.title = temp.join('')
-  image.image_path = 'http://placehold.it/350x150'
-  image.item_id = item.id
-  item.image_id = image.id
-  item.price = 40.00 + i
-  item.location = 3000 + i
-  image.user_id = i
+  # temp = 'test' + i
+  # item.title = temp.join('')
+  # image.image_path = 'http://placehold.it/350x150'
+  # image.item_id = item.id
+  # item.image_id = image.id
+  # item.price = 40.00 + i
+  # item.location = 3000 + i
+  # image.user_id = i
 
   image.save
   item.save
 end
+
+
