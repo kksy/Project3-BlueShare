@@ -16,3 +16,31 @@
 #   <%= item.loan_status %>
 #   <%= item.price %>
 #   <%= item.user_id %>
+
+var template = $([
+        "<div class='small-4 columns'>image here</div>",
+        "<div class='small-5 columns'>",
+        " <a href='#'><h5>Title of the ad</h5></a>",
+        "   <div class='small-3 columns'>",
+        "    <p><%= item.title %></p>",
+        "    </div>",
+        "   <div class='small-3 columns'>",
+        "   <h5><%= item.price %></h5>",
+        "   <p><%= item.location %></p>",
+        "   </div>",
+        "<hr>"
+      ].join("\n"));
+
+
+      <%= %>
+    <div class='small-4 columns'>image here</div>
+    <div class='small-5 columns'>
+     <a href='#'><h5>Title of the ad</h5></a>
+       <div class='small-3 columns'>
+        <p><%= item.title %></p>
+        </div>
+       <div class='small-3 columns'>
+       <h5><%= item.price %></h5>
+       <p><%= item.location %></p>
+       </div>
+    <hr>

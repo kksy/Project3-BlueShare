@@ -28,6 +28,8 @@ gem 'foundation-rails'
 
 gem 'ransack'
 
+gem 'simple_form'
+
 # gem 'geocoder'
 
 gem 'geocoder'
