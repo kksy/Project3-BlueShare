@@ -10,11 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require underscore
 //= require jquery
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+
 //= require_tree .
+//= require gmaps/google
+//= require map/map
+
 
 $(document).ready(function() {
 	$(document).foundation();
