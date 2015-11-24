@@ -4,12 +4,12 @@ class SessionController < ApplicationController
 
     user = User.find_by(email: params[:email])
 
-  if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
-    redirect_to route_path
-  else
-    render :new
-  end
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to "/"
+    else
+      render :login
+    end
 
     # e = User.new
     # e.email = params[:email]
@@ -17,6 +17,12 @@ class SessionController < ApplicationController
     # e.save
 
   end
+
+  # def login
+  #   user = User.find_by(email: params[:email])
+  #
+  #
+  # end
 
   def destroy
     session[:user_id] = nil
