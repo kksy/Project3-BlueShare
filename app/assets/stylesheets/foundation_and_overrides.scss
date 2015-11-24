@@ -1489,3 +1489,47 @@ $include-html-global-classes: $include-html-classes;
 // $include-legacy-visibility-classes: true;
 
 @import 'foundation';
+
+.tile {
+  padding: 10px;
+  border: 2px solid #efefef;
+  border-radius: 7px;
+  margin-top: 40px;
+}
+
+/* tiles */
+.item-img img {
+  width: 100%;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+p {
+  color: #888;
+  font-size: 13px;
+}
+
+/* user dashboard */
+.tabs-container {
+  margin-top: 40px;
+}
+
+/* listing */
+.image-list {
+  margin-top: 20px;
+}
+
+.nav-margin {
+  margin-bottom: 20px;
+}
+
+.highlighted-info {
+  background-color: #008CBA;
+  border-radius: 10px;
+}
