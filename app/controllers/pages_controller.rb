@@ -5,12 +5,12 @@ class PagesController < ApplicationController
   end
 
   def about
-
+    
   end
-  
+
   def search
-    
-    
+
+
   end
 
 end

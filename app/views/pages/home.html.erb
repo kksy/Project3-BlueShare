@@ -13,5 +13,12 @@
 
   </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGkKjou7IlXrvAqZt7XanRRrS8Vw2pnYw"></script>
-<script type="text/javascript" src='app/assets/javascripts/map/map.js'></script>
+
+<!-- <script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+markers = handler.addMarkers(<%=raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+});
+</script> -->

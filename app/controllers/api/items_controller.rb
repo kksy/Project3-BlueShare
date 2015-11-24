@@ -13,8 +13,9 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
+    
   end
-  
+
   def destroy
   end
 end
