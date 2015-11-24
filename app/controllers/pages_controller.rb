@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def home
-    # @items = Item.first.title
-    # render json: @items
+    @items = Item.all
   end
 
   def about
@@ -28,3 +27,16 @@ end
 #   <%= item.loan_status %>
 #   <%= item.price %>
 #   <%= item.user_id %>
+
+
+<%= search_form_for @search do |f| %>
+
+  <div class="field">
+    <%= f.label :title_cont, "Name contains"%>
+     <%= f.text_field :title_cont %>
+
+     </div>
+  <div class="actions"><%= f.submit "search" %> </div>
+
+<% end %>
+
