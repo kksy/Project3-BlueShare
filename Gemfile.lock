@@ -157,7 +157,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   bcrypt (~> 3.1.7)
+=======
+  bcrypt (~> 3.1, >= 3.1.5)
+>>>>>>> b4126e482247de6f7e903f7e662c83dab0e50711
   byebug
   coffee-rails (~> 4.1.0)
   foundation-rails

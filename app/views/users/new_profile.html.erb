@@ -1,0 +1,13 @@
+<h1>SignUp</h1>
+<%= form_tag '/user_signup', method: 'put' do %>
+
+  <label for="">Name</label>
+  <input name="name">
+  <label>email</label>
+  <input type="text" name='email'>
+  <label>password</label>
+  <input type="password" name="password">
+
+  <button>Login</button>
+
+<% end %>

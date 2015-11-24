@@ -7,23 +7,23 @@
 	  <div class="row">
 	    <div class="large-12 columns">
 	      <label>Listing Title
-	        <input type="text" name="title">
+	        <input type="text" name="item[title]">
 	      </label>
 	    </div>
 	  </div>
 	  
-	  <div class="row">
+	  <!-- <div class="row">
 	    <div class="large-6 columns">
 	      <label>List Start Date
-	        <%= date_field(:item, :list_start) %>
+	        <%#= date_field(:item, :list_start) %>
 	      </label>
 	    </div>
 	    <div class="large-6 columns">
 	      <label>List End Date
-	        <%= date_field(:item, :list_end) %>
+	        <%#= date_field(:item, :list_end) %>
 	      </label>
 	    </div>
-	  </div>
+	  </div> -->
 	  
 	  <div class="row">
 	    <div class="large-12 columns">
@@ -44,11 +44,32 @@
 	      </label>
 	    </div>
 	  </div>
+
+	  <div class="row">
+	    <div class="large-12 columns">
+	      <div class="row collapse prefix-radius">
+	        <div class="small-3 columns">
+	          <span class="prefix">$</span>
+	        </div>
+	        <div class="small-9 columns">
+	          <%= number_field(:item, :price, in: 0.0..100000.0, step: 0.5) %>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="row">
+	    <div class="large-12 columns">
+	      <label>Listing Location
+	        <input type="text" name="item[location]" placeholder="postcode">
+	      </label>
+	    </div>
+	  </div>
 	  
 	  <div class="row">
 	    <div class="large-12 columns">
 	      <label>Listing Description
-	        <textarea name="description"></textarea>
+	        <textarea></textarea>
 	      </label>
 	    </div>
 	  </div>

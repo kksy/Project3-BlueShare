@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+
+ */
+@import "foundation_and_overrides";
+
+/* hero */
+.hero {
+  // background: url(image-path('blue-gradient.jpg')) no-repeat center center;
+  background: url('http://bizonagro.ru/media/upload/68213d6d-c88f-466d-a40d-8f8bd6b2fa83.JPG') no-repeat center center;
+  background-size: cover;
+  height: 50vh;
+  margin-bottom: 20px;
+  
+  .intro {
+    padding: 3rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* tiles */
+.tile {
+  padding: 10px;
+  border: 2px solid #efefef;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.item-img img {
+  width: 100%;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+p {
+  color: #888;
+  font-size: 13px;
+}
+
+/* user dashboard */
+.tabs-container {
+  margin-top: 40px;
+}
+
+/* listing */
+.image-list {
+  margin-top: 20px;
+}
+
+.nav-margin {
+  margin-bottom: 20px;
+}
+
+.highlighted-info {
+  background-color: #008CBA;
+  border-radius: 10px;
+}
+
+/* search bar top */
+.search-bar {
+	margin-top: 20px;
+}
+
+/* status */
+.onloan {
+	color: red;
+}
+
+.available {
+	color: green
+}
