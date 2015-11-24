@@ -20,17 +20,18 @@
 </section>
 
 <!-- TILES -->
-<!-- <%#= @items %> -->
+<% @items.each do |item| %>
   <div class="medium-6 large-3 columns">
     <div class="tile">
       <div class="item-img">
         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
       </div>  
-      <a href="#"><h3>Kickin with Kraken Tee</h3></a>
-      <h5>$19.99</h5>
+      <a href="#"><h3><%= item.title %></h3></a>
+      <h5>$<%= item.price %></h5>
+      <p><%= item.location %></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
       <a class="button expand view-listing">View Listing</a>
     </div>    
   </div>
-
+<% end %>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGkKjou7IlXrvAqZt7XanRRrS8Vw2pnYw"></script>
