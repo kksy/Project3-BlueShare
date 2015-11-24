@@ -1,0 +1,16 @@
+<h1>Edit Profile</h1>
+<%= form_tag '/user_edit', method: 'put' do %>
+
+  <label for="">Name</label>
+  <input name="name" value="<%= current_user.name %>">
+  <label>email</label>
+  <input type="text" name='email'>
+  <label>password</label>
+  <input type="password" name="password">
+  <label for="">Avatar</label>
+  <input name="profile_avatar" value="<%= current_user.profile_avatar %>">
+  <label for="">Postcode</label>
+  <input name="postcode" value="<%= current_user.postcode %>">
+
+  <button>Edit</button>
+<% end %>

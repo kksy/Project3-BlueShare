@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -13,7 +12,7 @@
   </head>
 
   <body>
-		
+
 		<!-- NAVIGATION -->
 		<nav class="top-bar" data-topbar role="navigation">
 	  <ul class="title-area">
@@ -27,11 +26,21 @@
 	  <section class="top-bar-section">
 	    <!-- Right Nav Section -->
 	    <ul class="right">
+        <li><a href="<%= signup_path %>">Signup</a></li>
 	      <li class="has-dropdown">
-	        <a href="#">Right Button Dropdown</a>
+	        <% if logged_in? %>
+             <a><%= current_user.name %></a>
+             <% else %>
+             <a href="/login">Login</a>
+           <% end %>
 	        <ul class="dropdown">
-	          <li><a href="#">First link in dropdown</a></li>
-	          <li class="active"><a href="#">Active link in dropdown</a></li>
+            <% if logged_in?  %>
+	            <li><a href="<%= user_path %>">Go to Profile</a></li>
+              <%= form_tag "/logout", method: 'delete' do %>
+                <li><button>Logout</button></li>
+              <% end %>
+              <li class="active"><a href="<%= edit_profile_path %>">Edit Profile</a></li>
+            <% end %>
 	        </ul>
 	      </li>
 	      <li class="active"><a href="#">Create Listing</a></li>
@@ -52,7 +61,6 @@
 	    </ul>
 	  </section>
 	</nav>
-
 
     <%= yield %>
 
