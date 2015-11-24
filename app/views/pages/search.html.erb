@@ -1,9 +1,16 @@
 <h1>Searched Items</h1>
-<% @.each do |item| %>
+<% @match.each do |item| %>
 
   <p>
-  <%= item.title %>
+  
+  
+   <%= item.title %>
+   <%= item.image_id %>
+
+
   
   </p>
+
+ 
 
 <% end %>

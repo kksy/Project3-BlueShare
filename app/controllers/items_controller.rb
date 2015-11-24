@@ -18,10 +18,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(params[:item].keys)
   end
 
-  def search
-
-
-    @match = Item.all
-  end
 
 end
