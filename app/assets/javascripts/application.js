@@ -17,7 +17,7 @@
 //= require turbolinks
 
 //= require_tree .
-//= require gmaps/google
+// require gmaps/google
 //= require map/map
 
 

@@ -20,10 +20,3 @@ Item.create(title: 'big tractor', image_id: 'http://i.ebayimg.com/00/s/NDgwWDY0M
 
 Item.create(title: 'sprayer', image_id: '
 https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
-
-
-
-
-
-
-
