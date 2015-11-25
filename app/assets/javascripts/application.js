@@ -13,7 +13,7 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require foundation
 
 //= require_tree .
@@ -24,3 +24,5 @@
 $(document).ready(function() {
 	$(document).foundation();
 });
+
+//= require turbolinks
