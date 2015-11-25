@@ -32,7 +32,7 @@
           <% @listings.each do |listing| %>
             <div class="small-4 columns"><img src="<%= ItemImage.find_by(item_id: listing.id).image_path %>"></div>
             <div class="small-5 columns">
-              <a href="#"><h5><%= listing.title %></h5></a>
+              <a href="<%= item_path(listing.id) %>"><h5><%= listing.title %></h5></a>
               <p>some description</p>
             </div>
             <div class="small-3 columns">
