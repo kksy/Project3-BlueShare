@@ -2,12 +2,12 @@
 <div class="row">
 	<div class="large-10 large-centered columns">
 
-	<form action="<%= items_path %>" method="post" enctype="multipart/form-data">
+	<%= form_for @item do |f| %>
 
 	  <div class="row">
 	    <div class="large-12 columns">
 	      <label>Listing Title
-	        <input type="text" name="item[title]">
+	        <%= f.text_field :title %>
 	      </label>
 	    </div>
 	  </div>
@@ -43,15 +43,6 @@
 	    </div>
 	  </div>
 
-	   <div class="row">
-	    <div class="large-12 columns">
-	      <label>Item Image
-	        <input type="file" name="item_image">
-	      </label>
-	    </div>
-	  </div>
-
-
 	  <div class="row">
 	    <div class="large-12 columns">
 	      <div class="row collapse prefix-radius">
@@ -82,7 +73,7 @@
 	    </div>
 	  </div>
 
-	  <button class="button right">Submit</button>
-
+	  <button class="button right">Upload Image &raquo;</button>
+	<% end %>
 	</div>
 </div>

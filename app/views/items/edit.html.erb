@@ -38,14 +38,6 @@
 		    </div>
 		  </div>
 
-		   <div class="row">
-		    <div class="large-12 columns">
-		      <label>Item Image
-		        <input type="file" name="item[item_image]">
-		      </label>
-		    </div>
-		  </div>
-
 			<div class="row">
 		    <div class="large-12 columns">
 		      <div class="row collapse prefix-radius">
@@ -79,11 +71,11 @@
 		    </div>
 		  </div>
 
-			<button class="button">Update</button>
+			<button class="button right update-button">Update</button>
 		<% end %>
 
 		<%= form_for @item, method: 'delete' do |f| %>
-			<button class="button alert">Delete</button>
+			<button class="button alert right">Delete</button>
 		<% end %>
 
 	</div>
