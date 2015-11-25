@@ -14,6 +14,10 @@ class PagesController < ApplicationController
       @query = params[:search_input]
       @result = Item.where("title LIKE ?", "%#{@query}%")
     else
+
+      # @cover_image = ItemImage.find_by(item_id: )
+    else
+
       redirect_to '/'
 
     end

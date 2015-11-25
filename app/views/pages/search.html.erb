@@ -15,46 +15,40 @@
 
 
 <!-- GOOGLE MAP -->
-<div class="small-12 large-6 columns map" style= "width: 30em; height: 60em;">
-	<p>map here</p>
-</div>
+
+<div class="page-layout">
+
+
+  <div class="map-container">
+    <div class="small-12 large-6 columns">
+    	<p>map here</p>
+    </div>
+  </div>
 
 <!-- SEARCH RESULTS -->
-<div id="result-box" class="small-12 large-6 columns">
-	<h2>Search Results</h2>
-  <div class="add-result-box">
+<div class="searched-items">
+  <div id="result-box" class="small-12 large-6 columns">
+  	<h2>Search Results</h2>
+    <div class="add-result-box">
 
-
-	<div class="small-4 columns">image here</div>
-  <div class="small-5 columns ">
-  	<a href="#"><h5>Title of the ad</h5></a>
-  	<p>some description</p>
+    <% @result.each do |item| %>
+    <div id='cover_image' data-id="<%= item.id%>" class="small-4 columns"></div>
+    <div class="small-5 columns">
+      <a href="#"><h5><%= item.title %></h5></a>
+      <p>some description</p>
+    </div>
+    <div class="small-3 columns">
+      <h5>$<%= item.price %></h5>
+      <p><%= item.location %></p>
+      <p><%= item.loan_status %></p>
+    </div>
+    <hr>
+  <% end %>
   </div>
-  <div class="small-3 columns">
-  	<h5>$100</h5>
-  	<p>location</p>
-  </div>
-  <hr>
-
-  <% @result.each do |item| %>
-
-
-  <p>
-  <%= item.title %>
-
-  </p>
-
-
-<% end %>
-
-
-
-
-  </div>
+</div>
 
 
 </div>
-
 
 
 <!-- JavaScript for map -->
@@ -113,9 +107,6 @@ $.ajax(options).done(function(data){
   });
 })
 })
-</script>
-
-<script>
 
 //   var options = {
 //   url: 'http://localhost:3000/api/items',
@@ -165,7 +156,43 @@ $.ajax(options).done(function(data){
 
   // })
 
+var options1 = {
+  url: 'http://localhost:3000/api/item_images',
+  type: 'get',
+  dataType: 'json'
+};
 
+$.ajax(options1).done(function(data) {
 
+      $('div #cover_image').each(function(index){
+          var value = $( this ).data('id') 
+
+        var imageFirst = getObjects(data, 'item_id', String(value))
+
+        $(this).append("<img src='" +imageFirst[0].image_path +"'>")
+        // image_path
+      });
+
+    });
+
+function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));    
+        } else 
+        //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+        if (i == key && obj[i] == val || i == key && val == '') { //
+            objects.push(obj);
+        } else if (obj[i] == val && key == ''){
+            //only add if the object is not already in the array
+            if (objects.lastIndexOf(obj) == -1){
+                objects.push(obj);
+            }
+        }
+    }
+    return objects;
+}
 
 </script>

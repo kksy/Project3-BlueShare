@@ -1,6 +1,6 @@
 <!-- DASHBOARD -->
 <div class="row">
-  <div class="large-10 large-centered columns tabs-container">
+  <div class="large-10 large-centered columns top-margin">
     <ul class="tabs" data-tab>
       <li class="tab-title active"><a href="#panel1">Profile</a></li>
       <li class="tab-title"><a href="#panel2">Listing</a></li>
@@ -30,24 +30,24 @@
           <h2>Listing</h2>
           
           <% @listings.each do |listing| %>
-            <div class="small-4 columns">image here</div>
+            <div class="small-4 columns"><img src="<%= ItemImage.find_by(item_id: listing.id).image_path %>"></div>
             <div class="small-5 columns">
-              <a href="#"><h5><%= listing.title %></h5></a>
+              <a href="<%= item_path(listing.id) %>"><h5><%= listing.title %></h5></a>
               <p>some description</p>
             </div>
             <div class="small-3 columns">
               <h5>$<%= listing.price %></h5>
-              <h5 class="<%= listing.loan_status == 'onloan'? 'onloan' : 'available'  %>"><%= listing.loan_status %></h5>
+              <h5 class="<%= listing.loan_status == 'available'? 'available' : 'onloan'  %>"><%= listing.loan_status %></h5>
               <ul class="inline-list">
                 <li>
-                  <form action="<%= edit_item_path(listing.id) %>" method="get">
+                  <%= form_tag edit_item_path(listing.id), method: 'get' do %>
                     <button class="button tiny">edit</button>
-                  </form>
+                  <% end %>
                 </li>
                 <li>
-                  <form action="<%= item_path(listing.id) %>" method="delete">
+                  <%= form_tag item_path(listing.id), method: 'delete' do %>
                     <button class="button tiny alert">Delete</button>
-                  </form>
+                  <% end %>
                 </li>
               </ul>
             </div>

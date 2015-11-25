@@ -2,8 +2,10 @@ Item.delete_all
 User.delete_all
 ItemImage.delete_all
 
+
 Item.create(title: 'sprayer', image_id: '
 https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
+
 
 
 def create_users(nubmer_of_users)
@@ -26,6 +28,7 @@ def crerate_items(user_id)
     item.location = (3000..3400).to_a.sample
     item.title = ['test', j].join('')
     item.user_id = user_id
+    item.loan_status = 'available'
     item.save
     create_items_images(item.id, user_id)
   end

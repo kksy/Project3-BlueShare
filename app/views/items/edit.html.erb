@@ -2,12 +2,13 @@
 <div class="row">
 	<div class="large-10 large-centered columns">
 	
-		<form action="<%= item_path %>" method="put" enctype="multipart/form-data">
+		<%= form_for @item do |f| %>
 		  
 		  <div class="row">
 		    <div class="large-12 columns">
 		      <label>Listing Title
-		        <input type="text" name="item[title]" value="<%= @item.title %>">
+		      	<!-- <input type="text" name="item[title]" value="<%#= @item.title %>"> -->
+		      	<%= f.text_field :title %>
 		      </label>
 		    </div>
 		  </div>
@@ -63,6 +64,8 @@
 		      <label>Loan Status</label>
 		      <input type="radio" name="item[loan_status]" value="onloan" <%= 'checked' if @item.loan_status == 'onloan' %>>
 		      <label>On Loan</label>
+		      <input type="radio" name="item[loan_status]" value="reserved" <%= 'checked' if @item.loan_status == 'reserved' %>>
+		      <label>Reserved</label>
 		      <input type="radio" name="item[loan_status]" value="available" <%= 'checked' if @item.loan_status == 'available' %>>
 		      <label>Available</label>
 		    </div>
@@ -75,17 +78,13 @@
 		      </label>
 		    </div>
 		  </div>
-		
-			<ul class="inline-list right">
-				<li>
-					<form action="<%= item_path %>" method="delete">
-						<button class="button alert">Delete</button>
-					</form>
-				</li>
 
-		  	<li><button class="button">Update</button></li>
-		  </ul>
-		</form>
+			<button class="button">Update</button>
+		<% end %>
+
+		<%= form_for @item, method: 'delete' do |f| %>
+			<button class="button alert">Delete</button>
+		<% end %>
 
 	</div>
 </div>

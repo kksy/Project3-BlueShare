@@ -12,9 +12,8 @@ Rails.application.routes.draw do
 #search page
   get '/search' => 'pages#search'
 
- # get '/'
-#item
- get '/items/:id' => 'items#show'
+
+ # get '/items/:id' => 'items#show'
 
 # Get user routes
  get '/user' => 'users#home'
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :items, only: [:index, :create, :destroy]
+    resources :item_images, only: [:index, :create, :destroy]
      # resources :ratings only [:index, :create, :destroy]
   end
 
