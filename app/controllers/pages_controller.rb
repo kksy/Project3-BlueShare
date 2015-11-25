@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
       @query = params[:search_input]
       @result = Item.where("title LIKE ?", "%#{@query}%")
-      haversine_distance( lat1, lon1, lat2, lon2 )
+      # haversine_distance( lat1, lon1, lat2, lon2 )
       # Item.where("location qLIKE ?", "%#{@query}%")
       # @cover_image = ItemImage.find_by(item_id: )
 
@@ -30,8 +30,6 @@ class PagesController < ApplicationController
   end
 
 end
-<<<<<<< HEAD
-=======
 
 
 
@@ -83,4 +81,3 @@ end
 # end
 
 # puts "Summary, #{property_count} scanned, #{too_far_away_count} deemed too far away (more than #{MAX_DISTANCE_AWAY_IN_KM})"
->>>>>>> 13e7448d03e4fb62cd8d66b1af2602928b65be12
