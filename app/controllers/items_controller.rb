@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :price, :location, :user_id, :loan_status)
   end
 
-
+  
   def search
     @match = Item.all
     if @item.save
