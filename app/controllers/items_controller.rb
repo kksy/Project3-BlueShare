@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title).merge(user_id: current_user.id)
   end
 
-
+  
   def search
     @match = Item.all
     if @item.save

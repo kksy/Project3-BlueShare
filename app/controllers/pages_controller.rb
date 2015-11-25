@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    
+
   end
 
   def search
@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     if !params[:search_input].empty?
       @query = params[:search_input]
       @result = Item.where("title LIKE ?", "%#{@query}%")
-    else 
+    else
       redirect_to '/'
 
     end
@@ -21,10 +21,3 @@ class PagesController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-

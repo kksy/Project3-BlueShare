@@ -13,15 +13,10 @@
             <button class="button postfix">search</button>
           </div>
         </div>
-<<<<<<< HEAD
+
     </form>
-=======
-
-      </div>
+  </div>
   </form>
-    
->>>>>>> master
-
   </div>
 </section>
 
@@ -36,7 +31,8 @@
       <h5>$<%= item.price %></h5>
       <p><%= item.location %></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
-      <a class="button expand view-listing">View Listing</a>
+      <a href= "items/<%= item.id %>" class="button expand view-listing">View Listing</a>
+      <!-- <%= link_to 'View Listing', " /items/:id " %> -->
     </div>
   </div>
 <% end %>

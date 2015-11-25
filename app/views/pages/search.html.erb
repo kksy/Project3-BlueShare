@@ -58,7 +58,9 @@
 
 
 <!-- JavaScript for map -->
+
 <script>
+
 $(document).ready(function(){
   var map = new google.maps.Map($('.map')[0],{
     zoom:5,
@@ -98,9 +100,7 @@ var options = {
   type: 'get',
   dataType: 'json'
 };
-// $.ajax(options).done(function (data) {
-//   console.log(data);
-// })
+
 $.ajax(options).done(function(data){
   _.each(data, function(item){
     // var lat =
@@ -117,11 +117,11 @@ $.ajax(options).done(function(data){
 
 <script>
 
-  var options = {
-  url: 'http://localhost:3000/api/items',
-  type: 'get',
-  dataType: 'json'
-}
+//   var options = {
+//   url: 'http://localhost:3000/api/items',
+//   type: 'get',
+//   dataType: 'json'
+// }
 
   // $('.postfix').on('click', function() {
   //   // console.log('here')
