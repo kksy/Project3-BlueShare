@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
  # get '/'
 #item
- get '/items/:id' => 'items#show'
+ # get '/items/:id' => 'items#show'
 
 # Get user routes
  get '/user' => 'users#home'
