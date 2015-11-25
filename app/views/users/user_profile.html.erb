@@ -40,14 +40,14 @@
               <h5 class="<%= listing.loan_status == 'onloan'? 'onloan' : 'available'  %>"><%= listing.loan_status %></h5>
               <ul class="inline-list">
                 <li>
-                  <form action="<%= edit_item_path(listing.id) %>" method="get">
+                  <%= form_tag edit_item_path(listing.id), method: 'get' do %>
                     <button class="button tiny">edit</button>
-                  </form>
+                  <% end %>
                 </li>
                 <li>
-                  <form action="<%= item_path(listing.id) %>" method="delete">
+                  <%= form_tag item_path(listing.id), method: 'delete' do %>
                     <button class="button tiny alert">Delete</button>
-                  </form>
+                  <% end %>
                 </li>
               </ul>
             </div>
