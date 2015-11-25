@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-
   end
 
   def create
@@ -26,14 +25,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to '/items'
+    end
 
   def show
-    @item = Item.find(params[:id])
+    if Item.find_by(id: params[:id])
+      @item = Item.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy
-
-
   end
 
   def item_params
