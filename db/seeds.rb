@@ -25,6 +25,7 @@ def crerate_items(user_id)
     # item.location = (3000..3400).to_a.sample
     item.title = ['test', j].join('')
     item.user_id = user_id
+    item.city = 'Melbourne'
     item.lat = Faker::Address.latitude
     item.lng = Faker::Address.longitude
     item.loan_status = 'available'

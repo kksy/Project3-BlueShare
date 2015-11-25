@@ -3,6 +3,7 @@
 class PagesController < ApplicationController
   def home
     @items = Item.all
+
   end
 
   def about
@@ -13,19 +14,27 @@ class PagesController < ApplicationController
 
     # @item = params[:search_input]
     # if !params[:search_input].empty? || !params[:search_input].nil? 
-    if params[:search_input].nil? || params[:search_input].empty?
+    if params[:search_input].nil?
       @query = params[:search_input]
       @result = Item.where("title LIKE ?", "%#{@query}%")
-      # haversine_distance( lat1, lon1, lat2, lon2 )
+      
       # Item.where("location qLIKE ?", "%#{@query}%")
       # @cover_image = ItemImage.find_by(item_id: )
     else
       # redirect_to '/'
     end
 
+
+
+
+
   end
 
 end
+
+
+
+
 
 
 # MAX_DISTANCE_AWAY_IN_KM = 100.0
