@@ -12,10 +12,6 @@ Rails.application.routes.draw do
 #search page
   get '/search' => 'pages#search'
 
- # get '/'
-#item
- get '/items/:id' => 'items#show'
-
 # Get user routes
  get '/user' => 'users#home'
  #

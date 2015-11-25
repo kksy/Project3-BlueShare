@@ -2,12 +2,13 @@
 <div class="row">
 	<div class="large-10 large-centered columns">
 	
-		<form action="<%= item_path %>" method="put" enctype="multipart/form-data">
+		<%= form_for @item do |f| %>
 		  
 		  <div class="row">
 		    <div class="large-12 columns">
 		      <label>Listing Title
-		        <input type="text" name="item[title]" value="<%= @item.title %>">
+		      	<!-- <input type="text" name="item[title]" value="<%#= @item.title %>"> -->
+		      	<%= f.text_field :title %>
 		      </label>
 		    </div>
 		  </div>
@@ -75,17 +76,13 @@
 		      </label>
 		    </div>
 		  </div>
-		
-			<ul class="inline-list right">
-				<li>
-					<form action="<%= item_path %>" method="delete">
-						<button class="button alert">Delete</button>
-					</form>
-				</li>
 
-		  	<li><button class="button">Update</button></li>
-		  </ul>
-		</form>
+			<button class="button">Update</button>
+		<% end %>
+
+		<%= form_for @item, method: 'delete' do |f| %>
+			<button class="button alert">Delete</button>
+		<% end %>
 
 	</div>
 </div>

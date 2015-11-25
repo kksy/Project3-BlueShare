@@ -4,8 +4,10 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
     @item.save
     redirect_to '/items'
   end
@@ -18,14 +20,14 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to '/items'
+    redirect_to '/user' 
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to '/items'
-    end
+    redirect_to '/user'
+  end
 
   def show
     if Item.find_by(id: params[:id])
@@ -35,11 +37,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-  end
 
   def item_params
-    params.require(:item).permit(:title).merge(user_id: current_user.id)
+    params.require(:item).permit(:title, :price, :location, :user_id, :loan_status)
   end
 
   def search
