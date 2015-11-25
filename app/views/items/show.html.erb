@@ -1,26 +1,19 @@
 <div class="row">
   <!-- IMAGES -->
   <div class="medium-8 columns">
+    <% if ItemImage.where(item_id: params[:id]).count == 1 %>
+      <img class="th" src="<%= @item.item_images.first.image_path %>">
+    <% else %>
+      <img class="th" src="<%= @item.item_images.first.image_path %>">
+      <ul class="small-block-grid-4 image-list">
     <% @item.item_images.each do |image| %>
-    <img class="th" src="<%= image.image_path %>">
-    <ul class="small-block-grid-4 image-list">
       <li>
         <a class="th" href="../img/demos/demo2.png">
-          <img src="http://placehold.it/140x100">
+          <img src="<%= image.image_path %>">
         </a>
       </li>
-      <li>
-        <a class="th" href="../img/demos/demo2.png">
-          <img src="http://placehold.it/140x100">
-        </a>
-      </li>
-      <li>
-        <a class="th" href="../img/demos/demo2.png">
-          <img src="http://placehold.it/140x100">
-          <i class="fa fa-user"></i>
-        </a>
-      </li>
-    </ul>
+      <% end %>
+      </ul>
     <% end %>
   </div>
   <div class="medium-4 columns highlighted-info">
