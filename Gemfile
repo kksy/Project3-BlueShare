@@ -44,7 +44,7 @@ gem 'gmaps4rails'
 gem 'bcrypt', '~> 3.1.7'
 
 
-
+gem 'australia_postcode', '~> 0.1.3'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

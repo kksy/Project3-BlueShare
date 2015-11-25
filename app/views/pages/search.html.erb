@@ -98,30 +98,49 @@ var options = {
   type: 'get',
   dataType: 'json'
 };
-// $.ajax(options).done(function (data) {
-//   console.log(data);
-// })
-$.ajax(options).done(function(data){
-  _.each(data, function(item){
-    // var lat =
-    // var long =
-      var marker = new google.maps.Marker({
-      position: {lat: -37.8232, lng: 144.9729},
-      map: map,
-      title: item.title
-    });
+var arr = [];
+$.ajax(options).done(function (data) {
+  // arr = []
+  // for (var i = 0; i < data.length; i++) {
+  //   for ( key in data[i].location_details) {
+  //     console.log(key[0].latitude);
+  //   }
+  // }
+  _.each(data, function(data) {
+    if (data.location_details.localities.locality instanceof Array) {
+      for (var i = 0; i < data.location_details.localities.locality.length; i++) {
+          for (var obj in data.location_details.localities.locality[i]) {
+            if (data.location_details.localities.locality[i].hasOwnProperty(obj)) {
+              console.log(obj.latitude);
+            }
+          }
+        }
+      } else if (data.location_details.localities.locality !== Array) {
+        console.log(data.location_details.localities.locality);
+      }
   });
-})
+});
+// $.ajax(options).done(function(data){
+//   _.each(data, function(item){
+//     // var lat =
+//     // var long =
+//       var marker = new google.maps.Marker({
+//       position: {lat: -37.8232, lng: 144.9729},
+//       map: map,
+//       title: item.title
+//     });
+//   });
+// })
 })
 </script>
 
 <script>
 
-  var options = {
-  url: 'http://localhost:3000/api/items',
-  type: 'get',
-  dataType: 'json'
-}
+//   var options = {
+//   url: 'http://localhost:3000/api/items',
+//   type: 'get',
+//   dataType: 'json'
+// }
 
   // $('.postfix').on('click', function() {
   //   // console.log('here')
