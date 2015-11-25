@@ -26,11 +26,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # foundation
 gem 'foundation-rails'
 
+gem 'httparty'
+
+
 gem 'ransack'
 
 gem 'simple_form'
 
 # gem 'geocoder'
+
 
 gem 'geocoder'
 gem 'gmaps4rails'

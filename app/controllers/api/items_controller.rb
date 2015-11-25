@@ -9,13 +9,35 @@ class Api::ItemsController < ApplicationController
     else
       @items = Item.limit(@limit).offset(( (params[:page].to_i - 1) * @limit ))
     end
-    render json: @items
+
+    # @items.each do |item|
+    #   i = item["location"]
+    #   r = HTTParty.get('http:/v0.postcodeapi.com.au/suburbs/i.json')
+    #   @latitude = r.first["latitude"]
+    #   # @latitude = r[0]["latitude"]
+    #   @longitude = r.first["longitude"]
+    #   # raise 'stop'
+    # end
+
+    render json: @items, methods: :location_details
   end
 
   def create
-    
+
   end
 
   def destroy
   end
+
+  # def markers
+  #
+  #   @items.each do |item|
+  #     i = item["location"]
+  #     r = HTTParty.get('http:/v0.postcodeapi.com.au/suburbs/i.json')
+  #     @latitude = r.first["latitude"]
+  #     # @latitude = r[0]["latitude"]
+  #     @longitude = r.first["longitude"]
+  #     # raise 'stop'
+  #   end
+  # end
 end

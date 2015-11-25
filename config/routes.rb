@@ -34,7 +34,7 @@ Rails.application.routes.draw do
  get '/about' => 'pages#about'
 
 # resources page called lenders with index,new,edit,delete pages
-  resources :lenders
+  resources :users
 
   resources :items
 

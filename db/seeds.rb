@@ -23,13 +23,17 @@ ItemImage.delete_all
 # https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
 
 
+Item.create(title: 'sprayer', image_id: '
+https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
+
+
 
 
 
 def create_users(nubmer_of_users)
     for i in 1..nubmer_of_users
     user = User.new
-    user.name = ['user', i].join('') 
+    user.name = ['user', i].join('')
     user.password = '123'
     user.postcode = ['300', i].join('')
     user.email = 'user@gmail.com'
@@ -55,13 +59,10 @@ def create_items_images(item_id, user_id)
   for k in 1..5
     image = ItemImage.new
     image.image_path = 'http://placehold.it/350x150'
-    image.item_id = item_id 
+    image.item_id = item_id
     image.user_id = user_id
     image.save
     end
 end
 
 create_users(5)
-
-
-

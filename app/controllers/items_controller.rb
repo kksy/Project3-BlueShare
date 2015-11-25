@@ -38,13 +38,28 @@ class ItemsController < ApplicationController
   end
 
 
+
   def item_params
     params.require(:item).permit(:title, :price, :location, :user_id, :loan_status)
   end
 
+
   def search
     @match = Item.all
+    if @item.save
+      redirect_to '/items', notice: 'items list'
+    else
+      render :new
+    end
   end
+
+
+
+
+
+  # def item_params
+  #   params.require(:item).permit(params[:item].keys)
+  # end
 
 
 end
