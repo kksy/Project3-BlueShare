@@ -1,4 +1,6 @@
 Item.delete_all
+User.delete_all
+ItemImage.delete_all
 
 # Item.create(title: 'tractor', image_id: 'https://www.deere.com/common/media/images/product/tractors/r4d042782_8Rtractor_762x458.jpg', loan_status: 'onloan', price: 40.00, report: 'n/a', user_id: 1, location: '3000')
 
@@ -21,28 +23,45 @@ Item.delete_all
 # https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
 
 
-for i in 0..5
-  user = User.new
-    # for i in 0..10
-    #   item = Item.new
-    #   for i in 0..5
-    #   image = ItemImage.new
-    #   # temp = 'test' + i
-    #   # item.title = temp.join('')
-    #   # image.image_path = 'http://placehold.it/350x150'
-    #   # image.item_id = item.id
-    #   # item.image_id = image.id
-    #   # temp3 =  40.00 + i
-    #   # item.price = temp3
-    #   # temp2 = 3000 + i
-    #   # item.location = temp2.to_s
-    #   # image.user_id = user.id
 
-    #   image.save
-    #   end
-    # item.save
-    # end
-  user.save
+
+
+def create_users(nubmer_of_users)
+    for i in 1..nubmer_of_users
+    user = User.new
+    user.name = ['user', i].join('') 
+    user.password = '123'
+    user.postcode = ['300', i].join('')
+    user.email = 'user@gmail.com'
+    user.profile_avatar = 'http://placehold.it/140x100'
+    user.save
+    crerate_items(user.id)
+  end
 end
+
+def crerate_items(user_id)
+  for j in 0..9
+    item = Item.new
+    item.price = (200..500).to_a.sample.to_f
+    item.location = (3000..3400).to_a.sample
+    item.title = ['test', j].join('')
+    item.user_id = user_id
+    item.save
+    create_items_images(item.id, user_id)
+  end
+end
+
+def create_items_images(item_id, user_id)
+  for k in 1..5
+    image = ItemImage.new
+    image.image_path = 'http://placehold.it/350x150'
+    image.item_id = item_id 
+    image.user_id = user_id
+    image.save
+    end
+end
+
+create_users(5)
+
 
 
