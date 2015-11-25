@@ -16,16 +16,9 @@
               <button class="button postfix">Search</button>
             </div>
           </div>
-          <div class="small-2 columns">
-            <button class="button postfix">search</button>
-          </div>
-        </div>
-
-    </form>
-  </div>
-  </form>
       </div>
     </form>
+
   </div>
 </section>
 
@@ -34,16 +27,17 @@
   <div class="medium-6 large-3 columns">
     <div class="tile">
       <div class="item-img">
-        <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
+        <a href="#"><img src="<>"></a>
       </div>
       <a href="#"><h3><%= item.title %></h3></a>
       <h5>$<%= item.price %></h5>
       <p><%= item.location %></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
-      <a href= "items/<%= item.id %>" class="button expand view-listing">View Listing</a>
-      <!-- <%= link_to 'View Listing', " /items/:id " %> -->
+      <a class="button expand view-listing">View Listing</a>
     </div>
   </div>
 <% end %>
+
+
 
 
