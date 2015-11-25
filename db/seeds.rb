@@ -2,6 +2,12 @@ Item.delete_all
 User.delete_all
 ItemImage.delete_all
 
+
+Item.create(title: 'sprayer', image_id: '
+https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrCxWpKR7HFv5zaxKcBx_ZiSsFfK7UCR3okauxKRgKMb4NakxP', loan_status: 'onloan', price: '40.00', report: 'n/a', user_id: 1, location: '3000')
+
+
+
 def create_users(nubmer_of_users)
     for i in 1..nubmer_of_users
     user = User.new
