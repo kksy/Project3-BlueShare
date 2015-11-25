@@ -64,6 +64,8 @@
 		      <label>Loan Status</label>
 		      <input type="radio" name="item[loan_status]" value="onloan" <%= 'checked' if @item.loan_status == 'onloan' %>>
 		      <label>On Loan</label>
+		      <input type="radio" name="item[loan_status]" value="reserved" <%= 'checked' if @item.loan_status == 'reserved' %>>
+		      <label>Reserved</label>
 		      <input type="radio" name="item[loan_status]" value="available" <%= 'checked' if @item.loan_status == 'available' %>>
 		      <label>Available</label>
 		    </div>
