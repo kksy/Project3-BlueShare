@@ -7,6 +7,8 @@
       <li class="tab-title"><a href="#panel3">Borrowed</a></li>
     </ul>
     <div class="tabs-content">
+      
+      <!-- PROFILE TAB -->
       <div class="content active" id="panel1">
         <div class="user_details">
              <p>Name: <%= current_user.name %></p>
@@ -20,8 +22,10 @@
              <p>Created Account On: <%= current_user.created_at %></p>
              <p>Last Updated Account On: <%= current_user.updated_at %></p>
         </div>
-        
-        <!-- LISTING TEMPORARY LOCATION -->
+      </div>
+      
+      <!-- LISTING TAB -->
+      <div class="content" id="panel2">
         <div class="listing">
           <h2>Listing</h2>
           
@@ -51,11 +55,9 @@
           <% end %>
         
         </div>
-
       </div>
-      <div class="content" id="panel2">
-        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-      </div>
+      
+      <!-- BORROWED TAB -->
       <div class="content" id="panel3">
         <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
       </div>
