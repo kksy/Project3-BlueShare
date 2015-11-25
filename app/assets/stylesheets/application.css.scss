@@ -21,7 +21,8 @@ $primary-colour: #008CBA;
 /* hero */
 .hero {
   // background: url(image-path('blue-gradient.jpg')) no-repeat center center;
-  background: url('http://bizonagro.ru/media/upload/68213d6d-c88f-466d-a40d-8f8bd6b2fa83.JPG') no-repeat center center;
+  // http://bizonagro.ru/media/upload/68213d6d-c88f-466d-a40d-8f8bd6b2fa83.JPG
+  background: url(image-path('truck.JPG')) no-repeat center center;
   background-size: cover;
   height: 50vh;
   margin-bottom: 20px;
