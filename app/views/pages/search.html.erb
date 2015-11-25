@@ -40,6 +40,7 @@
     <div class="small-3 columns">
       <h5>$<%= item.price %></h5>
       <p><%= item.location %></p>
+      <p><%= item.loan_status %></p>
     </div>
     <hr>
   <% end %>
@@ -106,7 +107,6 @@ $.ajax(options).done(function(data){
   });
 })
 })
-
 
   var options = {
   url: 'http://localhost:3000/api/items',
