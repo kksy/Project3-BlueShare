@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row top-margin">
   <!-- IMAGES -->
   <div class="medium-8 columns">
     <% if ItemImage.where(item_id: params[:id]).count == 1 %>
@@ -16,10 +16,13 @@
       </ul>
     <% end %>
   </div>
+
+  <!-- INFO -->
   <div class="medium-4 columns highlighted-info">
     <h2><i class="fi-torso"></i><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
-    <p><%= @item.location %></p>
-    <button class="button secondary expand round">Contact Lender</button>
+    <p>postcode: <%= @item.location %></p>
+    <button class="button expand round">Contact Lender</button>
+    <button class="button success expand round">Reserve Item</button>
   </div>
 </div>
