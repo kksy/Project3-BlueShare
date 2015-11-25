@@ -16,6 +16,8 @@
  */
 @import "foundation_and_overrides";
 
+$primary-colour: #008CBA;
+
 /* hero */
 .hero {
   // background: url(image-path('blue-gradient.jpg')) no-repeat center center;
@@ -58,7 +60,7 @@ p {
 }
 
 /* user dashboard */
-.tabs-container {
+.top-margin {
   margin-top: 40px;
 }
 
@@ -72,7 +74,7 @@ p {
 }
 
 .highlighted-info {
-  background-color: #008CBA;
+  background-color: lighten($primary-colour, 50%);
   border-radius: 10px;
 }
 
