@@ -33,6 +33,8 @@ gem 'ransack'
 
 gem 'simple_form'
 
+gem 'image_suckr'
+
 # gem 'geocoder'
 
 
@@ -42,6 +44,8 @@ gem 'gmaps4rails'
 # Use ActiveModel has_secure_password
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'pry'
 
 
 
