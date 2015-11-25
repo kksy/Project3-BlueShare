@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     redirect_to '/items'
   end
 
+
   def edit
     @item = Item.find(params[:id])
   end
@@ -25,6 +26,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to '/items'
+
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def destroy
+
+
   end
 
   def item_params
@@ -34,9 +43,5 @@ class ItemsController < ApplicationController
   def search
     @match = Item.all
   end
-
-  def show
-   @item = Item.find(params[:id])
- end
 
 end
