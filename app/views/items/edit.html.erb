@@ -1,0 +1,91 @@
+<h1 class="text-center">Update Listing</h1>
+<div class="row">
+	<div class="large-10 large-centered columns">
+	
+		<form action="<%= item_path %>" method="put" enctype="multipart/form-data">
+		  
+		  <div class="row">
+		    <div class="large-12 columns">
+		      <label>Listing Title
+		        <input type="text" name="item[title]" value="<%= @item.title %>">
+		      </label>
+		    </div>
+		  </div>
+		  
+		  <!-- <div class="row">
+		    <div class="large-6 columns">
+		      <label>List Start Date
+		        <%#= date_field(:item, :list_start) %>
+		      </label>
+		    </div>
+		    <div class="large-6 columns">
+		      <label>List End Date
+		        <%#= date_field(:item, :list_end) %>
+		      </label>
+		    </div>
+		  </div> -->
+		  
+		  <div class="row">
+		    <div class="large-12 columns">
+		      <label>Item Category
+		      <% ItemType.all.each do |item_type| %>
+		        <select>
+		          <option value="<%= item_type.id %>"><%= item_type.name %></option>
+		        </select>
+		      <% end %>
+		      </label>
+		    </div>
+		  </div>
+
+		   <div class="row">
+		    <div class="large-12 columns">
+		      <label>Item Image
+		        <input type="file" name="item[item_image]">
+		      </label>
+		    </div>
+		  </div>
+
+			<div class="row">
+		    <div class="large-12 columns">
+		      <div class="row collapse prefix-radius">
+		        <div class="small-3 columns">
+		          <span class="prefix">$</span>
+		        </div>
+		        <div class="small-9 columns">
+		          <%= number_field(:item, :price, in: 0.0..100000.0, step: 0.5) %>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="row">
+		    <div class="large-6 columns">
+		      <label>Loan Status</label>
+		      <input type="radio" name="item[loan_status]" value="onloan" <%= 'checked' if @item.loan_status == 'onloan' %>>
+		      <label>On Loan</label>
+		      <input type="radio" name="item[loan_status]" value="available" <%= 'checked' if @item.loan_status == 'available' %>>
+		      <label>Available</label>
+		    </div>
+		  </div>
+		  
+		  <div class="row">
+		    <div class="large-12 columns">
+		      <label>Listing Description
+		        <textarea></textarea>
+		      </label>
+		    </div>
+		  </div>
+		
+			<ul class="inline-list right">
+				<li>
+					<form action="<%= item_path %>" method="delete">
+						<button class="button alert">Delete</button>
+					</form>
+				</li>
+
+		  	<li><button class="button">Update</button></li>
+		  </ul>
+		</form>
+
+	</div>
+</div>

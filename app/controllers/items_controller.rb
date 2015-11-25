@@ -15,9 +15,37 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to '/items'
+  end
+
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+    redirect_to '/items'
+    end
+
+  def show
+    if Item.find_by(id: params[:id])
+      @item = Item.find(params[:id])
+    else
+      redirect_to '/'
+    end
+  end
+
+  def destroy
+  end
+
+
+  def item_params
+    params.require(:item).permit(:title).merge(user_id: current_user.id)
   end
 
 
@@ -33,8 +61,10 @@ class ItemsController < ApplicationController
 
 
 
+
   # def item_params
   #   params.require(:item).permit(params[:item].keys)
   # end
+
 
 end

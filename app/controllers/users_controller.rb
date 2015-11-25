@@ -9,6 +9,8 @@
 
 class UsersController < ApplicationController
   def home
+    @listings = Item.where(user_id: current_user.id)
+    # @borrowed = Item.where(borrower_id: current_user.id, loan_status: 'onloan')
     render :user_profile
   end
 

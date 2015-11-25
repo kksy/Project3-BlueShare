@@ -1,16 +1,18 @@
+
 <!-- SEARCH -->
-<form class="search-bar" action="/">
+<form class="search-bar" action="search" method="get">
     <div class="large-12 columns">
       <div class="row collapse">
         <div class="small-10 columns">
-          <input type="text" placeholder="search">
+          <input name="search_input" class="search-input" type="text" placeholder="search">
         </div>
         <div class="small-2 columns">
-          <a href="#" class="button postfix">search</a>
+          <a class="button postfix">search</a>
         </div>
       </div>
     </div>
 </form>
+
 
 <!-- GOOGLE MAP -->
 <div class="small-12 large-6 columns map" style= "width: 30em; height: 60em;">
@@ -18,8 +20,10 @@
 </div>
 
 <!-- SEARCH RESULTS -->
-<div class="small-12 large-6 columns">
+<div id="result-box" class="small-12 large-6 columns">
 	<h2>Search Results</h2>
+  <div class="add-result-box">
+
 
 	<div class="small-4 columns">image here</div>
   <div class="small-5 columns ">
@@ -32,29 +36,25 @@
   </div>
   <hr>
 
-  <div class="small-4 columns">image here</div>
-  <div class="small-5 columns">
-  	<a href="#"><h5>Title of the ad</h5></a>
-  	<p>some description</p>
-  </div>
-  <div class="small-3 columns">
-  	<h5>$100</h5>
-  	<p>location</p>
-  </div>
-  <hr>
+  <% @result.each do |item| %>
 
-  <div class="small-4 columns">image here</div>
-  <div class="small-5 columns">
-  	<a href="#"><h5>Title of the ad</h5></a>
-  	<p>some description</p>
+
+  <p>
+  <%= item.title %>
+
+  </p>
+
+
+<% end %>
+
+
+
+
   </div>
-  <div class="small-3 columns">
-  	<h5>$100</h5>
-  	<p>location</p>
-  </div>
-  <hr>
+
 
 </div>
+
 
 
 <!-- JavaScript for map -->
@@ -103,7 +103,7 @@ var options = {
 // })
 $.ajax(options).done(function(data){
   _.each(data, function(item){
-    // var lat = 
+    // var lat =
     // var long =
       var marker = new google.maps.Marker({
       position: {lat: -37.8232, lng: 144.9729},
@@ -113,4 +113,59 @@ $.ajax(options).done(function(data){
   });
 })
 })
+</script>
+
+<script>
+
+  var options = {
+  url: 'http://localhost:3000/api/items',
+  type: 'get',
+  dataType: 'json'
+}
+
+  // $('.postfix').on('click', function() {
+  //   // console.log('here')
+
+  //   console.log($('.search-input').val())
+
+  //   $.ajax(options).done(function(data) {
+  //   items = data;
+  //   var first_items = items.splice(0, 5);
+  //   _.each(first_items, function(item){
+
+  //   var template = $([
+  //       "<div class='small-4 columns'>image here</div>",
+  //       "<div class='small-5 columns'>",
+  //       " <a href='#'><h5>" + item.title + "</h5></a>",
+  //       "   <div class='small-3 columns'>",
+  //       "    <p>" + item.title + "</p>",
+  //       "    </div>",
+  //       "    <div class='small-3 columns'>",
+  //       "   <h5>" + item.price + "</h5>",
+  //       "   <p>" + item.location + "</p>",
+  //       "   </div>",
+  //       "<hr>"
+  //     ].join("\n"));
+
+  //   $('.add-result-box').append(template);
+
+    // var view = new DishItemView({model: dish });
+    // view.render();
+    // $('.dish-list').append(view.el);
+
+    // var marker = new google.maps.Marker({
+    //   position: {lat: dish.latitude, lng: dish.longitude },
+    //   map: map,
+    //   title: dish.name
+    // });
+
+
+// });
+
+
+  // })
+
+
+
+
 </script>

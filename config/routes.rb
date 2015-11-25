@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 # home page
   get '/' => 'pages#home'
 
+
   get '/home' => 'pages#home'
 
 #about page
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   get '/search' => 'pages#search'
 
  # get '/'
+#item
+ get '/items/:id' => 'items#show'
 
 # Get user routes
  get '/user' => 'users#home'

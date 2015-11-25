@@ -25,11 +25,25 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # foundation
 gem 'foundation-rails'
+
 gem 'httparty'
+
+
+gem 'ransack'
+
+gem 'simple_form'
+
+# gem 'geocoder'
+
+
 gem 'geocoder'
 gem 'gmaps4rails'
+
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1', '>= 3.1.5'
+
+gem 'bcrypt', '~> 3.1.7'
+
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
