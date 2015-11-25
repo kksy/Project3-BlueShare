@@ -28,6 +28,8 @@ gem 'foundation-rails'
 
 gem 'httparty'
 
+gem 'faker'
+
 
 gem 'ransack'
 
