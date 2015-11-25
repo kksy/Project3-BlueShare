@@ -10,7 +10,7 @@ def create_users(nubmer_of_users)
     user.name = ['user', i].join('')
     user.password = '123'
     user.postcode = ['300', i].join('')
-    user.email = 'user@gmail.com'
+    user.email = ['user',i,'@gmail.com'].join('')
     user.profile_avatar = 'http://placehold.it/140x100'
     user.save
     crerate_items(user.id)
