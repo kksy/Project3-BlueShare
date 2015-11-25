@@ -28,24 +28,22 @@
 	  <section class="top-bar-section">
 	    <!-- Right Nav Section -->
       <ul class="right">
-        <li><a href="<%= signup_path %>">Signup</a></li>
-	      <li class="has-dropdown">
-	        <% if logged_in? %>
-             <a><%= current_user.name %></a>
-             <% else %>
-             <a href="/login">Login</a>
-           <% end %>
-	        <ul class="dropdown">
-            <% if logged_in?  %>
-	            <li><a href="<%= user_path %>">Go to Profile</a></li>
-              <%= form_tag "/logout", method: 'delete' do %>
-                <li><button>Logout</button></li>
-              <% end %>
-              <li class="active"><a href="<%= edit_profile_path %>">Edit Profile</a></li>
-            <% end %>
-	        </ul>
-	      </li>
-	      <li class="active"><a href="/items/new">Create Listing</a></li>
+           <% if logged_in? %>
+             <li class="has-dropdown">
+              <a><%= current_user.name %></a>
+  	          <ul class="dropdown">
+  	            <li><a href="<%= user_path %>">Go to Profile</a></li>
+                <%= form_tag "/logout", method: 'delete' do %>
+                  <li><button>Logout</button></li>
+                <% end %>
+                <li class="active"><a href="<%= edit_profile_path %>">Edit Profile</a></li>
+  	         </ul>
+	          </li>
+          <% else %>
+            <li><a href="<%= signup_path %>">Signup</a></li>
+            <li><a href="/login">Login</a></li>
+          <% end %>
+	        <li class="active"><a href="<%= new_item_path	 %>">Create Listing</a></li>
 	    </ul>
 
 	    <!-- Left Nav Section -->
@@ -55,7 +53,6 @@
 				    </div>
 				  </div>
 				</li>
-
 	    </ul>
 	  </section>
 	</nav>

@@ -5,7 +5,7 @@ ItemImage.delete_all
 def create_users(nubmer_of_users)
     for i in 1..nubmer_of_users
     user = User.new
-    user.name = ['user', i].join('') 
+    user.name = ['user', i].join('')
     user.password = '123'
     user.postcode = ['300', i].join('')
     user.email = 'user@gmail.com'
@@ -32,13 +32,10 @@ def create_items_images(item_id, user_id)
   for k in 1..5
     image = ItemImage.new
     image.image_path = 'http://placehold.it/350x150'
-    image.item_id = item_id 
+    image.item_id = item_id
     image.user_id = user_id
     image.save
     end
 end
 
 create_users(5)
-
-
-

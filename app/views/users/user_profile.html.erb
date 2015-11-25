@@ -7,6 +7,8 @@
       <li class="tab-title"><a href="#panel3">Borrowed</a></li>
     </ul>
     <div class="tabs-content">
+      
+      <!-- PROFILE TAB -->
       <div class="content active" id="panel1">
         <div class="user_details">
              <p>Name: <%= current_user.name %></p>
@@ -20,8 +22,10 @@
              <p>Created Account On: <%= current_user.created_at %></p>
              <p>Last Updated Account On: <%= current_user.updated_at %></p>
         </div>
-        
-        <!-- LISTING TEMPORARY LOCATION -->
+      </div>
+      
+      <!-- LISTING TAB -->
+      <div class="content" id="panel2">
         <div class="listing">
           <h2>Listing</h2>
           
@@ -36,14 +40,14 @@
               <h5 class="<%= listing.loan_status == 'onloan'? 'onloan' : 'available'  %>"><%= listing.loan_status %></h5>
               <ul class="inline-list">
                 <li>
-                  <form action="<%= edit_item_path(listing.id) %>" method="get">
+                  <%= form_tag edit_item_path(listing.id), method: 'get' do %>
                     <button class="button tiny">edit</button>
-                  </form>
+                  <% end %>
                 </li>
                 <li>
-                  <form action="<%= item_path(listing.id) %>" method="delete">
+                  <%= form_tag item_path(listing.id), method: 'delete' do %>
                     <button class="button tiny alert">Delete</button>
-                  </form>
+                  <% end %>
                 </li>
               </ul>
             </div>
@@ -51,11 +55,9 @@
           <% end %>
         
         </div>
-
       </div>
-      <div class="content" id="panel2">
-        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-      </div>
+      
+      <!-- BORROWED TAB -->
       <div class="content" id="panel3">
         <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
       </div>
