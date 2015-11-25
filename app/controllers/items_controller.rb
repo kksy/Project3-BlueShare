@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     @item.location = params[:location].to_i
+    @item.loan_status = 'available'
     @item.save
     redirect_to new_item_image_path(item_id: @item.id)
   end
