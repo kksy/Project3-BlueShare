@@ -1,0 +1,35 @@
+<% @item.item_images.each do |image| %>
+<div class="row">
+  <!-- IMAGES -->
+  <div class="medium-8 columns">
+    <img class="th" src="<%= image.image_path %>">
+    <img class="th" src="http://placehold.it/140x100">
+    <ul class="small-block-grid-4 image-list">
+      <li>
+        <a class="th" href="../img/demos/demo2.png">
+          <img src="http://placehold.it/140x100">
+        </a>
+      </li>
+      <li>
+        <a class="th" href="../img/demos/demo2.png">
+          <img src="http://placehold.it/140x100">
+        </a>
+      </li>
+      <li>
+        <a class="th" href="../img/demos/demo2.png">
+          <img src="http://placehold.it/140x100">
+          <i class="fa fa-user"></i>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="medium-4 columns highlighted-info">
+    <h2><i class="fi-torso"></i><%= @item.title %></h2>
+    <h4>$<%= @item.price %></h4>
+    <p><%= @item.location %></p>
+    <button class="button secondary expand round">Contact Lender</button>
+  </div>
+</div>
+<% end %>
