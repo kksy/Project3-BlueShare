@@ -1,40 +1,34 @@
 Rails.application.routes.draw do
 
-# home page
+  # home page
   get '/' => 'pages#home'
-
-
   get '/home' => 'pages#home'
 
-#about page
+  #about page
   get '/about' => 'pages#about'
 
-#search page
+  #search page
   get '/search' => 'pages#search'
 
+  # Get user routes
+  get '/user' => 'users#home'
+  #
+  get '/edit_profile' => 'users#edit' # to show the form
+  put '/user_edit' => 'users#update'
+  #
+  get '/signup' => 'users#new'
+  #
+  put '/user_signup' => 'users#create'
 
- # get '/items/:id' => 'items#show'
-
-# Get user routes
- get '/user' => 'users#home'
- #
- get '/edit_profile' => 'users#edit' # to show the form
- put '/user_edit' => 'users#update'
- #
- get '/signup' => 'users#new'
- #
- put '/user_signup' => 'users#create'
-
-
- put '/user_edit' => 'users#home'
+  put '/user_edit' => 'users#home'
 
 
- # delete '/user_delete' => 'users#destroy'
- # get 'user/edit' =>
- resources :users
+  # delete '/user_delete' => 'users#destroy'
+  # get 'user/edit' =>
+  resources :users
 
-#about page
- get '/about' => 'pages#about'
+  #about page
+  get '/about' => 'pages#about'
 
 # resources page called lenders with index,new,edit,delete pages
   resources :users
@@ -55,5 +49,7 @@ Rails.application.routes.draw do
 
 
   resources :session
+
+  resources :item_images, only: [:new, :create]
 
 end

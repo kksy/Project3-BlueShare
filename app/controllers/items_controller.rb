@@ -4,12 +4,16 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def new
+    @item = Item.new
+  end
 
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
+    @item.location = params[:location].to_i
     @item.save
-    redirect_to '/items'
+    redirect_to new_item_image_path(item_id: @item.id)
   end
 
 
@@ -19,6 +23,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @item.location = params[:location].to_i
     @item.update(item_params)
     redirect_to '/user' 
   end
@@ -40,7 +45,7 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:title, :price, :location, :user_id, :loan_status)
+    params.require(:item).permit(:title, :price, :loan_status)
   end
 
   
@@ -52,14 +57,5 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
-
-
-
-
-  # def item_params
-  #   params.require(:item).permit(params[:item].keys)
-  # end
-
 
 end
