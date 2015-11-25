@@ -20,7 +20,7 @@ class PagesController < ApplicationController
       # Item.where("location qLIKE ?", "%#{@query}%")
       # @cover_image = ItemImage.find_by(item_id: )
     else
-      redirect_to '/'
+      # redirect_to '/'
     end
 
   end
