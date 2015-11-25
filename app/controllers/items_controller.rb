@@ -6,8 +6,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    # @item.postcode = params[:postcode]
+    # @item.title = params[:title]
     if @item.save
-      redirect_to '/items', notice: 'items list'
+      redirect_to '/items'
     else
       render :new
     end
@@ -28,8 +30,11 @@ class ItemsController < ApplicationController
     end
   end
 
-  def item_params
-    params.require(:item).permit(params[:item].keys)
-  end
+
+
+
+  # def item_params
+  #   params.require(:item).permit(params[:item].keys)
+  # end
 
 end

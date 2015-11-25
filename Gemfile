@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # foundation
 gem 'foundation-rails'
-
+gem 'httparty'
 gem 'geocoder'
 gem 'gmaps4rails'
 # Use ActiveModel has_secure_password
