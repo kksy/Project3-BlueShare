@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     if params[:search_input].nil? || params[:search_input].empty?
       @query = params[:search_input]
       @result = Item.where("title LIKE ?", "%#{@query}%")
+      # Item.where("location LIKE ?", "%#{@query}%")
       # @cover_image = ItemImage.find_by(item_id: )
     else
       redirect_to '/'
