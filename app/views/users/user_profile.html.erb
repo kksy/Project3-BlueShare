@@ -37,7 +37,7 @@
             </div>
             <div class="small-3 columns">
               <h5>$<%= listing.price %></h5>
-              <h5 class="<%= listing.loan_status == 'onloan'? 'onloan' : 'available'  %>"><%= listing.loan_status %></h5>
+              <h5 class="<%= listing.loan_status == 'available'? 'available' : 'onloan'  %>"><%= listing.loan_status %></h5>
               <ul class="inline-list">
                 <li>
                   <%= form_tag edit_item_path(listing.id), method: 'get' do %>
