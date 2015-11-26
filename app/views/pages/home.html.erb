@@ -6,10 +6,10 @@
     <form class="search-bar" action="search" method="get">
         <div class="large-12 columns">
           <div class="row collapse">
-            <div class="small-5 columns">
+            <div class="small-10 columns">
               <input name="search_input" class="search-input" type="text" placeholder="search">
             </div>
-           <!--   <div class="small-5 columns">
+          <!--    <div class="small-5 columns">
           <input name="search_location_input" class="search-input" type="text" placeholder="search location">
         </div> -->
             <div class="small-2 columns">
@@ -27,13 +27,56 @@
   <div class="medium-6 large-3 columns">
     <div class="tile">
       <div class="item-img">
-        <a href="/items/<%= item.id %>"><img src="<>"></a>
+        <a id="cover_image" data-id="<%= item.id%>" href="/items/<%= item.id %>"></a>
       </div>
       <a href="#"><h3><%= item.title %></h3></a>
       <h5>$<%= item.price %></h5>
-      <p><%= item.location %></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
+      <p><%= item.city %></p>
+      <p><%= item.item_details%></p>
       <a class="button expand view-listing">View Listing</a>
     </div>
   </div>
 <% end %>
+
+<script>
+
+var options1 = {
+  url: 'http://localhost:3000/api/item_images',
+  type: 'get',
+  dataType: 'json'
+};
+
+$.ajax(options1).done(function(data) {
+
+      $('a#cover_image').each(function(index){
+          var value = $( this ).data('id')
+
+        var imageFirst = getObjects(data, 'item_id', String(value))
+
+        $(this).append("<img src='" +imageFirst[0].image_path +"'>")
+        // image_path
+      });
+
+    });
+
+function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else
+        //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+        if (i == key && obj[i] == val || i == key && val == '') { //
+            objects.push(obj);
+        } else if (obj[i] == val && key == ''){
+            //only add if the object is not already in the array
+            if (objects.lastIndexOf(obj) == -1){
+                objects.push(obj);
+            }
+        }
+    }
+    return objects;
+}
+
+</script>
