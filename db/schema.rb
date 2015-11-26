@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124221014) do
+ActiveRecord::Schema.define(version: 20151125233426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,15 @@ ActiveRecord::Schema.define(version: 20151124221014) do
     t.float    "price"
     t.integer  "report"
     t.integer  "user_id"
-    t.string   "location"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "borrower_id"
+    t.string   "item_details"
+    t.string   "lat"
+    t.string   "lng"
+    t.string   "city"
+    t.string   "state"
+    t.string   "listdata"
   end
 
   create_table "profile_avatars", force: :cascade do |t|
@@ -59,6 +64,9 @@ ActiveRecord::Schema.define(version: 20151124221014) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "Items_on_loan"
+    t.string   "state"
+    t.string   "city"
+    t.string   "username"
   end
 
 end

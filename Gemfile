@@ -28,10 +28,14 @@ gem 'foundation-rails'
 
 gem 'httparty'
 
+gem 'faker'
+
 
 gem 'ransack'
 
 gem 'simple_form'
+
+gem 'image_suckr'
 
 # gem 'geocoder'
 
@@ -43,7 +47,12 @@ gem 'gmaps4rails'
 
 gem 'bcrypt', '~> 3.1.7'
 
+
+# gem 'pry'
+
+
 gem 'carrierwave'
+
 
 gem 'pry-rails'
 
