@@ -4,8 +4,8 @@
     <div class="demo">
       <ul id="lightSlider">
     <% @item.item_images.each do |image| %>
-        <li data-thumb="<%= image.image_path %>">
-          <img src="<%= image.image_path %>" alt="">
+        <li data-thumb="<%= image.image_path_backup %>">
+          <img src="<%= image.image_path_backup %>" alt="">
     <% end %>
   </div>
   </div>
@@ -16,9 +16,7 @@
     <p>postcode: <%= @item.location %></p>
     <button class="button success expand round" data-id="<%= @item.id %>">Reserve Item</button>
     <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
-  </div>
 </div>
-
 <div class="row">
   <div class="medium-8 columns">
     <p><%= @item.item_details %></p>
