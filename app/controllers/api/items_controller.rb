@@ -29,8 +29,8 @@ class Api::ItemsController < ApplicationController
   def destroy
   end
 
-  # def markers
-  #
+  def markers
+
   #   @items.each do |item|
   #     i = item["location"]
   #     r = HTTParty.get('http:/v0.postcodeapi.com.au/suburbs/i.json')
@@ -39,5 +39,5 @@ class Api::ItemsController < ApplicationController
   #     @longitude = r.first["longitude"]
   #     # raise 'stop'
   #   end
-  # end
+  end
 end

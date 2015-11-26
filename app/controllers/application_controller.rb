@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
 
     mail = SendGrid::Mail.new do |m|
-    m.to = "#{user}"
+    m.to = user.email
     if logged_in?
       m.from = "#{current_user.email}"
     else
@@ -36,5 +36,7 @@ class ApplicationController < ActionController::Base
     res = client.send(mail)
     puts res.code
     puts res.body
+
+    redirect_to  item_path
    end
 end
