@@ -2,14 +2,14 @@
   <!-- IMAGES -->
   <div class="medium-8 columns">
     <% if ItemImage.where(item_id: params[:id]).count == 1 %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
+      <img class="th" src="<%= @item.item_images.first.image_path_backup %>">
     <% else %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
+      <img class="th" src="<%= @item.item_images.first.image_path_backup %>">
       <ul class="small-block-grid-4 image-list">
     <% @item.item_images.each do |image| %>
       <li>
         <a class="th" href="../img/demos/demo2.png">
-          <img src="<%= image.image_path %>">
+          <img src="<%= image.image_path_backup %>">
         </a>
       </li>
       <% end %>
