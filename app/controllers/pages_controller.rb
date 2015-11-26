@@ -11,8 +11,6 @@ class PagesController < ApplicationController
   end
 
   def search
-
-    # @item = params[:search_input]
     if !params[:search_input].empty? || !params[:search_input].nil?
       if params[:search_location_input].empty? || !params[:search_input].nil?
         @query = params[:search_input]
