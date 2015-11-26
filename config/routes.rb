@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :items
 
   namespace :api do
-    resources :items, only: [:index, :create, :destroy]
+    resources :items, only: [:index, :create, :destroy, :update]
     resources :item_images, only: [:index, :create, :destroy]
      # resources :ratings only [:index, :create, :destroy]
   end

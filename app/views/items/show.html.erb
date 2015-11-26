@@ -4,21 +4,24 @@
     <div class="demo">
       <ul id="lightSlider">
     <% @item.item_images.each do |image| %>
-        <li data-thumb="<%= image.image_path %>">
-          <img src="<%= image.image_path %>" alt="">
+        <li data-thumb="<%= image.image_path_backup %>">
+          <img src="<%= image.image_path_backup %>" alt="">
     <% end %>
-
+  </div>
+  </div>
   <!-- INFO -->
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
-    <p>postcode: <%= @item.location %></p>
-    <button class="button expand round">Contact Lender</button>
-    <button class="button success expand round">Reserve Item</button>
+    <p>postcode: <%= @item.city %></p>
+    <button class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</button>
     <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
+</div>
+<div class="row">
+  <div class="medium-8 columns">
+    <p><%= @item.item_details %></p>
   </div>
 </div>
-
 
 <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h2 id="modalTitle">Contact Form</h2>
@@ -32,11 +35,44 @@
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
+<script>
+  $('.success').on('click',function(){
+    // console.log($(this).data('loan_status'));
+    var itemId= $(this).data('id');
+    // +itemId+
+      // status
+      //  var that = this;
+       $(this).toggleClass('success alert');
+    var options = {
+      url: '/api/items/'+itemId,
+      type: 'put' ,
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      dataType: 'json' ,
+      data: {loan_status: "reserved"}
+    }
+    // var status = "reserved"
+    // $.post('/items', item.loan_status);
+    $.ajax(options).done(function(data){
+      console.log(data);
+    })
+  })
+  $('.alert').on('click',function(){
+    $(this).toggleClass('alert success')
+    var itemId= $(this).data('id');
+    var options = {
+      url: '/api/items/'+itemId,
+      type: 'put',
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      dataType: 'json' ,
+      data: {loan_status: "available"}
+    }
+    $.ajax(options).done(function(data){
+      $(this).append('<p>This Item is reserved</p>');
+    })
+  })
+</script>
 
-
-
-
-<!-- <#%= form_tag 'action="/email/<%= @item.id %>"', method: 'post' do %> -->
+<!-- <#%= form_tag 'action="/email/<%#= @item.id %>"', method: 'post' do %> -->
   <!-- <label for="">Name</label>
   <input name="name">
   <label>Email</label>
