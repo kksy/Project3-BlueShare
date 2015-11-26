@@ -1,5 +1,5 @@
 
-<div class="map" style='width: 100%; height: 100%;'>
+<div class="map" style='width: 50%; height: 50%;'>
 </div>
 <script>
 $(document).ready(function(){
@@ -34,17 +34,6 @@ $(document).ready(function(){
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.');
   }
-})
-
-  var options = {
-    url: 'http:/localhost:3000/api/items',
-    type: 'get',
-    dataType: 'json'
-  };
-
-
-  $.ajax(options).done(function(){
-    $('.map').append('.');
-  })
+});
 
 </script>

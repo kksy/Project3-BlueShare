@@ -25,6 +25,49 @@
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.location %></p>
     <button class="button expand round">Contact Lender</button>
-    <button class="button success expand round">Reserve Item</button>
+    <button class="button success expand round" data-id="<%= @item.id %>">Reserve Item</button>
   </div>
 </div>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <p><%= @item.item_details %></p>
+  </div>
+</div>
+
+<script>
+  $('.success').on('click',function(){
+    // console.log($(this).data('loan_status'));
+    var itemId= $(this).data('id');
+    // +itemId+
+      // status
+      //  var that = this;
+       $(this).toggleClass('success alert');
+    var options = {
+      url: '/api/items/'+itemId,
+      type: 'put' ,
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      dataType: 'json' ,
+      data: {loan_status: "reserved"}
+    }
+    // var status = "reserved"
+    // $.post('/items', item.loan_status);
+    $.ajax(options).done(function(data){
+      console.log(data);
+    })
+  })
+  $('.alert').on('click',function(){
+    $(this).toggleClass('alert success')
+    var itemId= $(this).data('id');
+    var options = {
+      url: '/api/items/'+itemId,
+      type: 'put',
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      dataType: 'json' ,
+      data: {loan_status: "available"}
+    }
+    $.ajax(options).done(function(data){
+      $(this).append('<p>This Item is reserved</p>');
+    })
+  })
+</script>
