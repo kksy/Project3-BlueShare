@@ -35,18 +35,29 @@
     <div class="add-result-box">
 
     <% @result.each do |item| %>
-    <div id='cover_image' data-id="<%= item.id%>" class="small-4 columns"></div>
-    <div class="small-5 columns">
-      <a href="#"><h5><%= item.title %></h5></a>
-      <p>some description</p>
-    </div>
-    <div class="small-3 columns">
-      <h5>$<%= item.price %></h5>
-      <p><%= item.city %></p>
-      <p><%= item.loan_status %></p>
-    </div>
-    <hr>
-  <% end %>
+      <!-- <div id='cover_image' data-id="<%#= item.id%>" class="small-4 columns"></div> -->
+      <div class="small-4 columns">
+        <% if ItemImage.find_by(item_id: item.id) %>
+          <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %> 
+            <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+          <% else %>
+            <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+          <% end %>
+        <% else %>
+          <p>no image</p>
+        <% end %>
+      </div>
+      <div class="small-5 columns">
+        <a href="#"><h5><%= item.title %></h5></a>
+        <p><%= item.item_details %></p>
+      </div>
+      <div class="small-3 columns">
+        <h5>$<%= item.price %></h5>
+        <p><%= item.city %></p>
+        <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
+      </div>
+      <hr>
+    <% end %>
   </div>
 </div>
 
