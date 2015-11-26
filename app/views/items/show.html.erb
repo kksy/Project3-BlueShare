@@ -42,27 +42,26 @@
 
 <script>
   $('.success').on('click',function(){
-    // console.log($(this).data('loan_status'));
     var itemId= $(this).data('id');
-    // +itemId+
-      // status
-      //  var that = this;
-       $(this).toggleClass('success alert');
+    $(this).toggleClass('success alert');
+    var that = this;
     var options = {
       url: '/api/items/'+itemId,
       type: 'put' ,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       dataType: 'json' ,
       data: {loan_status: "reserved"}
-    }
-    // var status = "reserved"
-    // $.post('/items', item.loan_status);
+    };
+
     $.ajax(options).done(function(data){
       console.log(data);
-    })
-  })
+      $(that).text('Reserved');
+    });
+  });
+
   $('.alert').on('click',function(){
-    $(this).toggleClass('alert success')
+    $(this).toggleClass('alert success');
+    var that = this;
     var itemId= $(this).data('id');
     var options = {
       url: '/api/items/'+itemId,
@@ -70,12 +69,12 @@
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       dataType: 'json' ,
       data: {loan_status: "available"}
-    }
+    };
+
     $.ajax(options).done(function(data){
-      console.log(this);
-      $(this).append('<p>This Item is reserved</p>');
-    })
-  })
+      $(that).text('Reserve It');
+    });
+  });
 </script>
 
 <!-- <#%= form_tag 'action="/email/<%#= @item.id %>"', method: 'post' do %> -->
