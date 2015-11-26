@@ -37,7 +37,7 @@ $(document).ready(function() {
     loop: true,
     slideMargin: 0,
     thumbItem: 9
-});
+  });
 });
 
 //= require turbolinks
