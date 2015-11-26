@@ -23,20 +23,31 @@
 </section>
 
 <!-- TILES -->
-<% @items.each do |item| %>
-  <div class="medium-6 large-3 columns">
-    <div class="tile">
-      <div class="item-img">
-        <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
+<div id="masonry-grid">
+  <div class="grid-sizer"></div>
+ <!--  <div class="gutter-sizer"></div> -->
+  <% @items.each do |item| %>
+    <div class="grid-item">
+      <div class="tile">
+        <div class="item-img">
+            <!-- <%# if ItemImage.find_by(item_id: item.id) %>
+              <a href="#"><img src="<%#= ItemImage.find_by(item_id: item.id).image_path %>"></a>
+            <%# else %>
+              <p>no image</p>
+            <%# end %> -->
+            <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
+        </div>
+        <a href="#"><h3><%= item.title %></h3></a>
+        <h5>$<%= item.price %></h5>
+        <p><%= item.city %></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
+        <a class="button expand view-listing">View Listing</a>
       </div>
-      <a href="#"><h3><%= item.title %></h3></a>
-      <h5>$<%= item.price %></h5>
-      <p><%= item.city %></p>
-      <p><%= item.item_details%></p>
-      <a class="button expand view-listing">View Listing</a>
     </div>
+  <% end %>
   </div>
-<% end %>
+</div>
+
 
 <script>
 
@@ -49,11 +60,11 @@ var options1 = {
 $.ajax(options1).done(function(data) {
 
       $('a#cover_image').each(function(index){
-          var value = $( this ).data('id') 
+        var value = $( this ).data('id'); 
 
-        var imageFirst = getObjects(data, 'item_id', String(value))
+        var imageFirst = getObjects(data, 'item_id', String(value));
 
-        $(this).append("<img src='" +imageFirst[0].image_path +"'>")
+        $(this).append("<img src='" +imageFirst[0].image_path +"'>");
         // image_path
       });
 
