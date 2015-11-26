@@ -31,6 +31,13 @@
 // load foundation
 $(document).ready(function() {
 	$(document).foundation();
+	$('#lightSlider').lightSlider({
+    gallery: true,
+    item: 1,
+    loop: true,
+    slideMargin: 0,
+    thumbItem: 9
+});
 });
 
 //= require turbolinks

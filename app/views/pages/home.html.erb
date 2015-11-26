@@ -32,7 +32,7 @@
         <div class="item-img">
             <% if ItemImage.find_by(item_id: item.id) %>
               <a href="#">
-                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %> 
+                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
                   <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
                 <% else %>
                   <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
@@ -52,10 +52,8 @@
     </div>
   <% end %>
   </div>
-</div>
 
-
- <script>
+<script>
 
 // var options1 = {
 //   url: 'http://localhost:3000/api/item_images',
@@ -66,11 +64,11 @@
 // $.ajax(options1).done(function(data) {
 
 //       $('a#cover_image').each(function(index){
-//         var value = $( this ).data('id'); 
+//           var value = $( this ).data('id')
 
-//         var imageFirst = getObjects(data, 'item_id', String(value));
+//         var imageFirst = getObjects(data, 'item_id', String(value))
 
-//         $(this).append("<img src='" +imageFirst[0].image_path +"'>");
+//         $(this).append("<img src='" +imageFirst[0].image_path +"'>")
 //         // image_path
 //       });
 
@@ -81,8 +79,8 @@
 //     for (var i in obj) {
 //         if (!obj.hasOwnProperty(i)) continue;
 //         if (typeof obj[i] == 'object') {
-//             objects = objects.concat(getObjects(obj[i], key, val));    
-//         } else 
+//             objects = objects.concat(getObjects(obj[i], key, val));
+//         } else
 //         //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
 //         if (i == key && obj[i] == val || i == key && val == '') { //
 //             objects.push(obj);
@@ -96,9 +94,4 @@
 //     return objects;
 // }
 
- </script>
-
-
-
-
-
+</script>

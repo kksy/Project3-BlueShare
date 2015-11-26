@@ -38,7 +38,7 @@
       <!-- <div id='cover_image' data-id="<%#= item.id%>" class="small-4 columns"></div> -->
       <div class="small-4 columns">
         <% if ItemImage.find_by(item_id: item.id) %>
-          <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %> 
+          <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
             <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
           <% else %>
             <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
@@ -154,6 +154,7 @@ var options = {
   dataType: 'json'
 };
 
+data.location_details.localities.locality
 $.ajax(options).done(function(data){
   _.each(data, function(item){
     // var lat =
@@ -163,8 +164,20 @@ $.ajax(options).done(function(data){
       map: map,
       title: item.title
     });
+
   });
-})
+});
+// $.ajax(options).done(function(data){
+//   _.each(data, function(item){
+//     // var lat =
+//     // var long =
+//       var marker = new google.maps.Marker({
+//       position: {lat: -37.8232, lng: 144.9729},
+//       map: map,
+//       title: item.title
+//     });
+//   });
+// })
 // })
 
 //   var options = {
@@ -224,7 +237,7 @@ var options1 = {
 $.ajax(options1).done(function(data) {
 
       $('div #cover_image').each(function(index){
-          var value = $( this ).data('id') 
+          var value = $( this ).data('id')
 
         var imageFirst = getObjects(data, 'item_id', String(value))
 
@@ -239,8 +252,8 @@ function getObjects(obj, key, val) {
     for (var i in obj) {
         if (!obj.hasOwnProperty(i)) continue;
         if (typeof obj[i] == 'object') {
-            objects = objects.concat(getObjects(obj[i], key, val));    
-        } else 
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else
         //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
         if (i == key && obj[i] == val || i == key && val == '') { //
             objects.push(obj);

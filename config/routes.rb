@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   put '/user_edit' => 'users#home'
 
+  post '/items/:id' => 'application#sendmail'
+
 
   # delete '/user_delete' => 'users#destroy'
   # get 'user/edit' =>
