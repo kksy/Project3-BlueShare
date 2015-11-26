@@ -9,17 +9,17 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id])
   end
 
-   def logged_in?
+  def logged_in?
      current_user != nil
-   end
+  end
 
-   def sendmail
+  def sendmail
 
-     item = Item.find_by(id: params[:id])
-     user = User.find_by(id: item.user_id)
+    item = Item.find_by(id: params[:id])
+    user = User.find_by(id: item.user_id)
 
     client = SendGrid::Client.new do |c|
-       c.api_key = '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'
+      c.api_key = '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'
     end
 
     mail = SendGrid::Mail.new do |m|
@@ -36,5 +36,5 @@ class ApplicationController < ActionController::Base
     res = client.send(mail)
     puts res.code
     puts res.body
-   end
+    end
 end

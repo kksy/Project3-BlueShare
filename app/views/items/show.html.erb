@@ -3,26 +3,39 @@
   <div class="medium-8 columns">
     <div class="demo">
       <ul id="lightSlider">
-    <% @item.item_images.each do |image| %>
-        <li data-thumb="<%= image.image_path_backup %>">
-          <img src="<%= image.image_path_backup %>" alt="">
-    <% end %>
+        <% @item.item_images.each do |image| %>
+          <% if image[:image_path].nil? %> 
+            <li data-thumb="<%= image.image_path_backup %>">
+              <img src="<%= image.image_path_backup %>" alt="">
+            </li>
+          <% else %>
+            <li data-thumb="<%= image.image_path %>">
+              <img src="<%= image.image_path %>" alt="">
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  </div>
-  <!-- INFO -->
+  
+  <!-- INFO SIDEBAR -->
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.city %></p>
-    <button class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</button>
-    <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
+    <button id="reservation-btn" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
+    <a href="#" data-reveal-id="myModal"><button class="button expand round <%= 'disabled' if @is_owner %>">Contact</button></a>
+  </div>
 </div>
+
+<!-- ITEM DETAILS -->
 <div class="row">
   <div class="medium-8 columns">
     <p><%= @item.item_details %></p>
   </div>
 </div>
 
+<!-- MODAL -->
 <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h2 id="modalTitle">Contact Form</h2>
   <%= form_for :mail  do |f| %>
@@ -36,40 +49,53 @@
 </div>
 
 <script>
-  $('.success').on('click',function(){
-    // console.log($(this).data('loan_status'));
-    var itemId= $(this).data('id');
-    // +itemId+
-      // status
-      //  var that = this;
-       $(this).toggleClass('success alert');
-    var options = {
-      url: '/api/items/'+itemId,
-      type: 'put' ,
-      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      dataType: 'json' ,
-      data: {loan_status: "reserved"}
+
+  $('button').on('click', function() {
+    if ($(this).hasClass('disabled')) {
+      return false;
     }
-    // var status = "reserved"
-    // $.post('/items', item.loan_status);
-    $.ajax(options).done(function(data){
-      console.log(data);
-    })
-  })
-  $('.alert').on('click',function(){
-    $(this).toggleClass('alert success')
-    var itemId= $(this).data('id');
-    var options = {
-      url: '/api/items/'+itemId,
-      type: 'put',
-      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      dataType: 'json' ,
-      data: {loan_status: "available"}
+  });
+
+  // RESERVATION
+  $('#reservation-btn').on('click',function(){
+    // if owner of item
+    if($(this).hasClass('disabled')) {
+        return false;
+    // if available
+    } else if($(this).hasClass('alert')) {
+      $(this).html('Reserve It');
+      console.log(this);
+      var itemId= $(this).data('id');
+      $(this).toggleClass('success alert');
+      
+      var options = {
+        url: '/api/items/' + itemId,
+        type: 'put' ,
+        // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'json',
+        data: {loan_status: "reserved"}
+      };
+    // if reserved
+    } else if($(this).hasClass('success')) {
+      $(this).html('Reserved');
+      console.log(this);
+      $(this).toggleClass('alert success');
+      var itemId= $(this).data('id');
+      
+      var options = {
+        url: '/api/items/' + itemId,
+        type: 'put',
+        // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'json',
+        data: {loan_status: "available"}
+      };
     }
+
     $.ajax(options).done(function(data){
-      $(this).append('<p>This Item is reserved</p>');
-    })
-  })
+      // console.log(data);
+    });
+  });
+
 </script>
 
 <!-- <#%= form_tag 'action="/email/<%#= @item.id %>"', method: 'post' do %> -->
