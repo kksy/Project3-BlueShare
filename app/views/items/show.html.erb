@@ -7,14 +7,10 @@
         <li data-thumb="<%= image.image_path %>">
           <img src="<%= image.image_path %>" alt="">
     <% end %>
-      </li>
-      </ul>
-    </div>
-  </div>
 
   <!-- INFO -->
   <div class="medium-4 columns highlighted-info">
-    <h2><i class="fi-torso"></i><%= @item.title %></h2>
+    <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.location %></p>
     <button class="button expand round">Contact Lender</button>

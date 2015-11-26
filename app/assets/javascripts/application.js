@@ -18,13 +18,17 @@
 
 //= require_tree .
 
-// require gmaps/google
+//= require gmaps/google
 
-//  require gmaps/google
+//=  require gmaps/google
 
 //= require map/map
 
+//= require masonry
 
+//= require imageLoaded 
+
+// load foundation
 $(document).ready(function() {
 	$(document).foundation();
 	$('#lightSlider').lightSlider({
@@ -37,3 +41,16 @@ $(document).ready(function() {
 });
 
 //= require turbolinks
+
+// load masonry
+$(document).ready( function() {
+  // init Masonry after all images have loaded
+  var $grid = $('#masonry-grid').imagesLoaded( function() {
+    $grid.masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      columnWidth: '.grid-sizer'
+      // gutter: '.gutter-sizer'
+    }); 
+	});
+});

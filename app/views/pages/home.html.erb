@@ -4,37 +4,53 @@
 
     <!-- SEARCH -->
     <form class="search-bar" action="search" method="get">
-        <div class="large-12 columns">
-          <div class="row collapse">
-            <div class="small-10 columns">
-              <input name="search_input" class="search-input" type="text" placeholder="search">
-            </div>
-          <!--    <div class="small-5 columns">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <div class="small-5 columns">
+          <input name="search_input" class="search-input" type="text" placeholder="search items">
+        </div>
+        <div class="small-5 columns">
           <input name="search_location_input" class="search-input" type="text" placeholder="search location">
-        </div> -->
-            <div class="small-2 columns">
-              <button class="button postfix">Search</button>
-            </div>
-          </div>
+        </div>
+        <div class="small-2 columns">
+          <button class="button postfix">search</button>
+        </div>
       </div>
-    </form>
+    </div>
+</form>
 
   </div>
 </section>
 
 <!-- TILES -->
-<% @items.each do |item| %>
-  <div class="medium-6 large-3 columns">
-    <div class="tile">
-      <div class="item-img">
-        <a id="cover_image" data-id="<%= item.id%>" href="/items/<%= item.id %>"></a>
+<div id="masonry-grid">
+  <div class="grid-sizer"></div>
+ <!--  <div class="gutter-sizer"></div> -->
+  <% @items.each do |item| %>
+    <div class="grid-item">
+      <div class="tile">
+        <div class="item-img">
+            <% if ItemImage.find_by(item_id: item.id) %>
+              <a href="#">
+                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+                <% else %>
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+                <% end %>
+              </a>
+            <% else %>
+              <p>no image</p>
+            <% end %>
+            <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
+        </div>
+        <a href="#"><h3><%= item.title %></h3></a>
+        <h5>$<%= item.price %></h5>
+        <p><%= item.city %></p>
+        <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
+        <a class="button expand view-listing" href="/items/<%= item.id %>">View Listing</a>
       </div>
-      <a href="#"><h3><%= item.title %></h3></a>
-      <h5>$<%= item.price %></h5>
-      <p><%= item.city %></p>
-      <p><%= item.item_details%></p>
-      <a class="button expand view-listing">View Listing</a>
     </div>
+  <% end %>
   </div>
 <% end %>
 
