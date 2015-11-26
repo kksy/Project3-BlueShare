@@ -1,9 +1,8 @@
 Item.delete_all
 User.delete_all
 ItemImage.delete_all
+
 # require_relative '/aus_cites'
-
-
 
 australia_cities =
 [
@@ -2055,9 +2054,34 @@ australia_cities =
 "Copacabana"
 ]
 
+image_list = ["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
+ "http://farmingequipmentcanada.com/wp-content/uploads/2013/01/farm-equipment-list-baler.jpg",
+ "http://bishopfarmequipment.com/images/jd7130_640w.jpg",
+ "http://mfg.regionaldirectory.us/farm-equipment-720.jpg",
+ "http://farmingequipmentcanada.com/wp-content/uploads/2013/01/farm-equipment-list-tractor.jpg",
+ "http://previews.123rf.com/images/diyanski/diyanski1208/diyanski120800130/14857776-Agricultural-activities-modern-farm-equipment-in-field-Stock-Photo.jpg",
+ "http://www.mdixonfarms.com/siteart/slides/1.jpg",
+ "http://m.c.lnkd.licdn.com/mpr/mpr/p/8/005/0b5/375/0c89c0c.png",
+ "http://farmingweek.com/sites/default/files/Agricultural%2520machinery.jpg",
+ "https://agriculturalmachineryforfaming.files.wordpress.com/2013/07/15971007-agricultural-machinery-for-preparing-hay.jpg",
+ "http://thumbs.dreamstime.com/x/agricultural-machinery-sowing-tractor-seeder-30489925.jpg",
+ "http://www.nc-engineering.com/cms/wp-content/uploads/2013/04/Picture-26-Pulse-Jetter-Firing.jpg",
+ "http://www.fredhopkinswa.com.au/wp-content/uploads/wpsc/category_images/FC4000.jpg",
+ "https://upload.wikimedia.org/wikipedia/commons/0/08/Agricultural_machinery.jpg",
+ "http://images.farmingads.co.uk/guide-to-buying-used-farm-equipment.jpg",
+ "http://www.cottrill.ca/images/galleries/agriculture/OrangePetewithPup-Cleaned.jpg",
+ "http://www.farming2015.net/wp-content/uploads/2014/11/man-agricultural-truck-3.jpg",
+ "http://www.tatratrucks.com/cache/images/galleryPreviewBig/tatra-trucks_zeme-zivitelka_01_hlavni.jpg",
+ "http://wawg.enigmamarketing.com/wp-content/uploads/2015/03/farmtruck.jpg",
+ "http://oklahomafarmreport.com/wire/news/2012/03/media/00459_ForestTreeSeedlingProduction03282012.jpg",
+ "http://www.farm-equipment.com/ext/resources/images/Sitrex_QR_Range_V_Type_Rakes.jpg",
+ "http://img.houss.us/medium/2/agricultural%2520machinery.jpg",
+ "http://www.sitesthatmeanbusiness.com/wp-content/uploads/2015/06/Farming-Equipment.jpg",
+ "http://img.bedroomidea.us/medium/4/farming%2520machines.jpg"]
 
 
-def create_users(nubmer_of_users, australia_cities)
+
+def create_users(nubmer_of_users, australia_cities, img_list1)
     for i in 1..nubmer_of_users
     user = User.new
     # user.name = ['user', i].join('')
@@ -2068,12 +2092,13 @@ def create_users(nubmer_of_users, australia_cities)
     user.profile_avatar = 'http://placehold.it/140x100'
     user.city = australia_cities.sample.downcase
     user.save
-    crerate_items(user.id, user.city)
+    crerate_items(user.id, user.city, img_list1)
   end
 end
 
-def crerate_items(user_id, city)
+def crerate_items(user_id, city, img_list2)
   for j in 0..9
+    include Geokit::Geocoders
     city_list = []
     item = Item.new
     item.price = (200..500).to_a.sample.to_f
@@ -2081,26 +2106,27 @@ def crerate_items(user_id, city)
     item.title = ['test', j].join('')
     item.user_id = user_id
     item.city = city
-    item.lat = Faker::Address.latitude
-    item.lng = Faker::Address.longitude
+    coords = MultiGeocoder.geocode(city)
+    # item.lat = Faker::Address.latitude
+    # item.lng = Faker::Address.longitude
+    item.lat = coords.lat
+    item.lng = coords.lng
     item.loan_status = 'available'
     item.item_details = "Case 580c, all good working order, clean oil, well greased, runs and starts well, good tyres, three buckets for backhoe, really strong unit, done a great job. Reluctant sale as ive become become quite fond of casey"
     item.save
-    create_items_images(item.id, user_id)
+    create_items_images(item.id, user_id, img_list2)
   end
 end
 
-def create_items_images(item_id, user_id)
+def create_items_images(item_id, user_id, img_list3)
   for k in 1..5
     image = ItemImage.new
-    suckr = ImageSuckr::GoogleSuckr.new
     # image.image_path = 'http://placehold.it/350x150'
-    image.image_path = suckr.get_image_url({"q" => "farm equipment"})
+    image.image_path_backup = img_list3.sample
     image.item_id = item_id
     image.user_id = user_id
     image.save
     end
 end
-
-create_users(5, australia_cities)
+create_users(1, australia_cities, image_list)
 

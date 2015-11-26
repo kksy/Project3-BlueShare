@@ -30,6 +30,7 @@ gem 'httparty'
 
 gem 'faker'
 
+gem 'geokit'
 
 gem 'ransack'
 
