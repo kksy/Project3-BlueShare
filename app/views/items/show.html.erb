@@ -4,8 +4,13 @@
     <div class="demo">
       <ul id="lightSlider">
     <% @item.item_images.each do |image| %>
+      <% if image[:image_path].nil? %> 
         <li data-thumb="<%= image.image_path_backup %>">
           <img src="<%= image.image_path_backup %>" alt="">
+      <% else %>
+        <li data-thumb="<%= image.image_path %>">
+          <img src="<%= image.image_path %>" alt="">
+      <% end %>
     <% end %>
   </div>
   </div>
@@ -67,6 +72,7 @@
       data: {loan_status: "available"}
     }
     $.ajax(options).done(function(data){
+      console.log(this);
       $(this).append('<p>This Item is reserved</p>');
     })
   })
