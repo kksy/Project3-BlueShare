@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.location = params[:location].to_i
     @item.update(item_params)
-    redirect_to '/user' 
+    redirect_to '/user'
   end
 
   def destroy
@@ -49,14 +49,14 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :price, :loan_status)
   end
 
-  
+
   def search
     @match = Item.all
+    @items = Item.paginate(:page => params[:page], :per_page => 5)
     if @item.save
       redirect_to '/items', notice: 'items list'
     else
       render :new
     end
   end
-
 end

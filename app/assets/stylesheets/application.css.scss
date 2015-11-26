@@ -98,25 +98,42 @@ p {
   margin-left: 10px;
 }
 
+.container > div {
+display: inline-block;
+width: 49%;
+height: 100vh;
+vertical-align: top;
+}
+
+.sidebar {
+  overflow: scroll;
+}
+
+
+.load-more {
+  cursor: pointer;
+}
+
 
 .demo {
     width:100%;
-}
-ul {
+    ul {
     list-style: none outside none;
     padding-left: 0;
     margin-bottom:0;
-}
-li {
-    display: block;
-    float: left;
-    margin-right: 6px;
-    cursor:pointer;
-}
-img {
-    display: block;
-    height: auto;
-    max-width: 100%;
+    }
+    li {
+        display: block;
+        float: left;
+        margin-right: 6px;
+        cursor:pointer;
+    }
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
 }
 
 /* masonry css */

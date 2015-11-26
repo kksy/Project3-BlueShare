@@ -13,8 +13,8 @@
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
-    <p>postcode: <%= @item.location %></p>
-    <button class="button success expand round" data-id="<%= @item.id %>">Reserve Item</button>
+    <p>postcode: <%= @item.city %></p>
+    <button class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</button>
     <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
 </div>
 <div class="row">
