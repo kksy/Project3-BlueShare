@@ -2070,7 +2070,6 @@ image_list = ["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
  "https://upload.wikimedia.org/wikipedia/commons/0/08/Agricultural_machinery.jpg",
  "http://images.farmingads.co.uk/guide-to-buying-used-farm-equipment.jpg",
  "http://www.cottrill.ca/images/galleries/agriculture/OrangePetewithPup-Cleaned.jpg",
- "http://www.farming2015.net/wp-content/uploads/2014/11/man-agricultural-truck-3.jpg",
  "http://www.tatratrucks.com/cache/images/galleryPreviewBig/tatra-trucks_zeme-zivitelka_01_hlavni.jpg",
  "http://wawg.enigmamarketing.com/wp-content/uploads/2015/03/farmtruck.jpg",
  "http://oklahomafarmreport.com/wire/news/2012/03/media/00459_ForestTreeSeedlingProduction03282012.jpg",
@@ -2092,11 +2091,11 @@ def create_users(nubmer_of_users, australia_cities, img_list1)
     user.profile_avatar = 'http://placehold.it/140x100'
     user.city = australia_cities.sample.downcase
     user.save
-    crerate_items(user.id, user.city, img_list1)
+    create_items(user.id, user.city, img_list1)
   end
 end
 
-def crerate_items(user_id, city, img_list2)
+def create_items(user_id, city, img_list2)
   for j in 0..9
     include Geokit::Geocoders
     city_list = []
@@ -2128,5 +2127,5 @@ def create_items_images(item_id, user_id, img_list3)
     image.save
     end
 end
-create_users(1, australia_cities, image_list)
+create_users(5, australia_cities, image_list)
 
