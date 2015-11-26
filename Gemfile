@@ -43,8 +43,10 @@ gem 'gmaps4rails'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'carrierwave'
 
-gem 'australia_postcode', '~> 0.1.3'
+gem 'pry-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

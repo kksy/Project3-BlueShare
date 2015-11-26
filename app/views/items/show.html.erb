@@ -1,20 +1,15 @@
 <div class="row top-margin">
   <!-- IMAGES -->
   <div class="medium-8 columns">
-    <% if ItemImage.where(item_id: params[:id]).count == 1 %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
-    <% else %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
-      <ul class="small-block-grid-4 image-list">
+    <div class="demo">
+      <ul id="lightSlider">
     <% @item.item_images.each do |image| %>
-      <li>
-        <a class="th" href="../img/demos/demo2.png">
-          <img src="<%= image.image_path %>">
-        </a>
-      </li>
-      <% end %>
-      </ul>
+        <li data-thumb="<%= image.image_path %>">
+          <img src="<%= image.image_path %>" alt="">
     <% end %>
+      </li>
+      </ul>
+    </div>
   </div>
 
   <!-- INFO -->
