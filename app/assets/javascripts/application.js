@@ -28,6 +28,8 @@
 
 //= require imageLoaded 
 
+//= require lightslider
+
 // load foundation
 $(document).ready(function() {
 	$(document).foundation();
