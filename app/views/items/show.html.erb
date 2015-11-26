@@ -1,28 +1,47 @@
-<div class="row top-margin">
+<div class="row top-margin" data-item="id">
   <!-- IMAGES -->
   <div class="medium-8 columns">
-    <% if ItemImage.where(item_id: params[:id]).count == 1 %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
-    <% else %>
-      <img class="th" src="<%= @item.item_images.first.image_path %>">
-      <ul class="small-block-grid-4 image-list">
+    <div class="demo">
+      <ul id="lightSlider">
     <% @item.item_images.each do |image| %>
-      <li>
-        <a class="th" href="../img/demos/demo2.png">
-          <img src="<%= image.image_path %>">
-        </a>
-      </li>
-      <% end %>
-      </ul>
+        <li data-thumb="<%= image.image_path %>">
+          <img src="<%= image.image_path %>" alt="">
     <% end %>
-  </div>
 
   <!-- INFO -->
   <div class="medium-4 columns highlighted-info">
-    <h2><i class="fi-torso"></i><%= @item.title %></h2>
+    <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.location %></p>
     <button class="button expand round">Contact Lender</button>
     <button class="button success expand round">Reserve Item</button>
+    <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
   </div>
 </div>
+
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Contact Form</h2>
+  <%= form_for :mail  do |f| %>
+    Name: <%= f.text_field :name, required: true %>
+    Email: <%= f.text_field :email, required: true %>
+    Message: <%= f.text_area :message, required: true%>
+
+    <%= f.submit 'Send Message', class: "button success round" %>
+  <% end %>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+
+
+
+
+<!-- <#%= form_tag 'action="/email/<%= @item.id %>"', method: 'post' do %> -->
+  <!-- <label for="">Name</label>
+  <input name="name">
+  <label>Email</label>
+  <input type="text" name='email'>
+  <label for="">Message</label>
+  <textarea name="body" rows="8" cols="40"></textarea>
+  <button class="button success round">Send It</button>
+<#% end %> -->

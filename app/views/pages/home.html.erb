@@ -30,25 +30,30 @@
     <div class="grid-item">
       <div class="tile">
         <div class="item-img">
-            <!-- <%# if ItemImage.find_by(item_id: item.id) %>
-              <a href="#"><img src="<%#= ItemImage.find_by(item_id: item.id).image_path %>"></a>
-            <%# else %>
+            <% if ItemImage.find_by(item_id: item.id) %>
+              <a href="#">
+                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+                <% else %>
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+                <% end %>
+              </a>
+            <% else %>
               <p>no image</p>
-            <%# end %> -->
+            <% end %>
             <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
         </div>
         <a href="#"><h3><%= item.title %></h3></a>
         <h5>$<%= item.price %></h5>
         <p><%= item.city %></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere sem enim, accumsan convallis risus semper.</p>
-        <a class="button expand view-listing">View Listing</a>
+        <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
+        <a class="button expand view-listing" href="/items/<%= item.id %>">View Listing</a>
       </div>
     </div>
   <% end %>
   </div>
-</div>
-
-
+<%# end %>
+<!-- 
 <script>
 
 var options1 = {
@@ -60,11 +65,11 @@ var options1 = {
 $.ajax(options1).done(function(data) {
 
       $('a#cover_image').each(function(index){
-        var value = $( this ).data('id'); 
+          var value = $( this ).data('id')
 
-        var imageFirst = getObjects(data, 'item_id', String(value));
+        var imageFirst = getObjects(data, 'item_id', String(value))
 
-        $(this).append("<img src='" +imageFirst[0].image_path +"'>");
+        $(this).append("<img src='" +imageFirst[0].image_path +"'>")
         // image_path
       });
 
@@ -75,8 +80,8 @@ function getObjects(obj, key, val) {
     for (var i in obj) {
         if (!obj.hasOwnProperty(i)) continue;
         if (typeof obj[i] == 'object') {
-            objects = objects.concat(getObjects(obj[i], key, val));    
-        } else 
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else
         //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
         if (i == key && obj[i] == val || i == key && val == '') { //
             objects.push(obj);
@@ -91,8 +96,4 @@ function getObjects(obj, key, val) {
 }
 
 </script>
-
-
-
-
-
+ -->
