@@ -13,20 +13,31 @@ class PagesController < ApplicationController
   def search
 
     # @item = params[:search_input]
-    # if !params[:search_input].empty? || !params[:search_input].nil? 
-    if params[:search_input].nil?
-      @query = params[:search_input]
-      @result = Item.where("title LIKE ?", "%#{@query}%")
-      
-      # Item.where("location qLIKE ?", "%#{@query}%")
+    if !params[:search_input].empty? || !params[:search_input].nil? 
+      if params[:search_location_input].empty? || !params[:search_input].nil? 
+        @query = params[:search_input]
+        @location_query = params[:search_location_input]
+
+        @result = Item.where("title LIKE ?", "%#{@query}%")
+        @result.where("city LIKE ?", "%#{@location_query}%")
+        # @result.sort_by &:city
+        # binding.pry
+        # Item.where("city LIKE ?", "%#{@query}%")
       # @cover_image = ItemImage.find_by(item_id: )
+      else
+
+        @query = params[:search_input]
+        @result = Item.where("title LIKE ?", "%#{@query}%")
+      end
+
+    elsif params[:search_location_input].empty? || !params[:search_input].nil? 
+
+      @query = params[:search_input]
+      @result = Item.where("city LIKE ?", "%#{@query}%")
+      
     else
-      # redirect_to '/'
+      redirect_to '/'
     end
-
-
-
-
 
   end
 

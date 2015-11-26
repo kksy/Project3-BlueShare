@@ -44,3 +44,20 @@ var template = $([
        <p><%= item.location %></p>
        </div>
     <hr>
+
+
+     <!-- <form class="search-bar" action="search" method="get">
+        <div class="large-12 columns">
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <input name="search_input" class="search-input" type="text" placeholder="search">
+            </div>
+             <div class="small-5 columns">
+          <input name="search_location_input" class="search-input" type="text" placeholder="search location">
+        </div>
+            <div class="small-2 columns">
+              <button class="button postfix">Search</button>
+            </div>
+          </div>
+      </div>
+    </form> -->
