@@ -23,7 +23,7 @@
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.city %></p>
-    <button class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
+    <button id="reservation-btn" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
     <a href="#" data-reveal-id="myModal"><button class="button expand round <%= 'disabled' if @is_owner %>">Contact</button></a>
   </div>
 </div>
@@ -51,59 +51,51 @@
 <script>
 
   $('button').on('click', function() {
-    if($(this).hasClass('disabled')) {
-        return false;
-     }
-  })
-
-  // RESERVE
-  $('.success').on('click',function(){
-    
-    if($(this).hasClass('disabled')) {
-        return false;
+    if ($(this).hasClass('disabled')) {
+      return false;
     }
-
-    $('button.success').text($('button.success') == 'Reserved'? 'Reserve_It' : 'Reserved')
-
-    var itemId= $(this).data('id');
-    $(this).toggleClass('success alert');
-    var that = this;
-    var options = {
-      url: '/api/items/'+itemId,
-      type: 'put' ,
-      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      dataType: 'json' ,
-      data: {loan_status: "reserved"}
-    };
-
-    $.ajax(options).done(function(data){
-
-    });
   });
 
-  // REMOVE RESERVATION
-  $('.alert').on('click',function(){
-    
+  // RESERVATION
+  $('#reservation-btn').on('click',function(){
+    // if owner of item
     if($(this).hasClass('disabled')) {
         return false;
-    }
-
-    $('button.success').text($('button.success') == 'Reserved'? 'Reserve_It' : 'Reserved');
-    
-    $(this).toggleClass('alert success');
-    var itemId= $(this).data('id');
-    var options = {
-      url: '/api/items/'+itemId,
-      type: 'put',
-      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      dataType: 'json' ,
-      data: {loan_status: "available"}
-    };
-
-    $.ajax(options).done(function(data){
+    // if available
+    } else if($(this).hasClass('alert')) {
+      $(this).html('Reserve It');
+      console.log(this);
+      var itemId= $(this).data('id');
+      $(this).toggleClass('success alert');
       
+      var options = {
+        url: '/api/items/' + itemId,
+        type: 'put' ,
+        // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'json',
+        data: {loan_status: "reserved"}
+      };
+    // if reserved
+    } else if($(this).hasClass('success')) {
+      $(this).html('Reserved');
+      console.log(this);
+      $(this).toggleClass('alert success');
+      var itemId= $(this).data('id');
+      
+      var options = {
+        url: '/api/items/' + itemId,
+        type: 'put',
+        // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType: 'json',
+        data: {loan_status: "available"}
+      };
+    }
+
+    $.ajax(options).done(function(data){
+      // console.log(data);
     });
   });
+
 </script>
 
 <!-- <#%= form_tag 'action="/email/<%#= @item.id %>"', method: 'post' do %> -->
