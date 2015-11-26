@@ -26,6 +26,19 @@ class Api::ItemsController < ApplicationController
 
   end
 
+  def update
+    item = Item.find(params[:id])
+    if item.loan_status == 'available'
+      item.loan_status = 'reserved'
+      item.borrower_id = current_user.id
+    else
+      item.loan_status = 'available'
+      item.borrower_id = nil
+    end
+    item.save
+    render json: item
+  end
+
   def destroy
   end
 
