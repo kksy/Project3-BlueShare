@@ -1,15 +1,19 @@
-<h1>SignUp</h1>
-<%= form_tag '/user_signup', method: 'put' do %>
+<h1 class="text-center">SignUp</h1>
+<div class="row">
+	<div class="large-10 large-centered columns">
+		<%= form_tag '/user_signup', method: 'put' do %>
 
-  <label for="">Name</label>
-  <input name="name">
-  <label>email</label>
-  <input type="text" name='email'>
-  <label>Postcode</label>
-  <input type="text" name='location'>
-  <label>password</label>
-  <input type="password" name="password">
+		  <label for="">Name</label>
+		  <input name="name">
+		  <label>email</label>
+		  <input type="text" name='email'>
+		  <label>Postcode</label>
+		  <input type="text" name='location'>
+		  <label>password</label>
+		  <input type="password" name="password">
 
-  <button>Login</button>
+		  <button>Login</button>
 
-<% end %>
+		<% end %>
+	</div>
+</div>

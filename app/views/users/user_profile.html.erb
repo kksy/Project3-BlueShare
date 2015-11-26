@@ -44,7 +44,7 @@
             
             <div class="small-5 columns">
               <a href="<%= item_path(listing.id) %>"><h5><%= listing.title %></h5></a>
-              <p>some description</p>
+              <p><%= listing.item_details %></p>
             </div>
             <div class="small-3 columns">
               <h5>$<%= listing.price %></h5>
@@ -68,14 +68,33 @@
         </div>
       </div>
       
-      <!-- BORROWED TAB -->
+      <!-- BORROWED/RESERVED TAB -->
       <div class="content" id="panel3">
-        <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
-      </div>
-      <div class="content" id="panel4">
-        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
-      </div>
-    </div>
+        <h2>Reserved</h2>
+          
+          <% @borrowed.each do |item| %>
+            <div class="small-4 columns">
+              <% if ItemImage.find_by(item_id: item.id) %>
+                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %> 
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+                <% else %>
+                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+                <% end %>
+              <% else %>
+                <p>no image</p>
+              <% end %>
+            </div>
+            
+            <div class="small-5 columns">
+              <a href="<%= item_path(item.id) %>"><h5><%= item.title %></h5></a>
+              <p><%= item.item_details %></p>
+            </div>
+            <div class="small-3 columns">
+              <h5>$<%= item.price %></h5>
+              <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
+            </div>
+            <hr>
+          <% end %>
   </div>
   <!-- <#%= form_tag '/user_edit', method: 'put' do %>
     <button class="button alert">Delete User</button>
