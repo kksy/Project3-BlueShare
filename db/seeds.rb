@@ -2176,7 +2176,7 @@ def create_items(user_id, city, postcode ,img_list2, name_list)
 end
 
 def create_items_images(item_id, user_id, img_list3)
-  for k in 1..1
+  for k in 1..3
     image = ItemImage.new
     # image.image_path = 'http://placehold.it/350x150'
     image.image_path_backup = img_list3.sample
