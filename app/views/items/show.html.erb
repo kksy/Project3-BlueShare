@@ -3,22 +3,55 @@
   <div class="medium-8 columns">
     <div class="demo">
       <ul id="lightSlider">
-    <% @item.item_images.each do |image| %>
-        <li data-thumb="<%= image.image_path_backup %>">
-          <img src="<%= image.image_path_backup %>" alt="">
-    <% end %>
+        <% @item.item_images.each do |image| %>
+          <% if image[:image_path].nil? %>
+            <li data-thumb="<%= image.image_path_backup %>">
+              <img src="<%= image.image_path_backup %>" alt="">
+            </li>
+          <% else %>
+            <li data-thumb="<%= image.image_path %>">
+              <img src="<%= image.image_path %>" alt="">
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  </div>
+
   <!-- INFO -->
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.city %></p>
+
+    <% if logged_in? %>
     <button class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</button>
+
+    <% else %>
+    <a href="<%= login_path %>" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</a>
+    <% end %>
+
+    <% if logged_in? %>
     <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
+
+    <% else %>
+    <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
+
+    <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Not logged in</h2>
+     <p class="lead">If you are a user than please login first.</p>
+     <p class="lead">If not a user than please signup.</p>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <% end %>
+
+  </div>
+  </div>
 </div>
-<div class="row">
-  <div class="medium-8 columns">
+
+<hr>
+<div class=" row">
+  <div class="item-details medium-8 columns">
     <p><%= @item.item_details %></p>
   </div>
 </div>
@@ -37,27 +70,26 @@
 
 <script>
   $('.success').on('click',function(){
-    // console.log($(this).data('loan_status'));
     var itemId= $(this).data('id');
-    // +itemId+
-      // status
-      //  var that = this;
-       $(this).toggleClass('success alert');
+    $(this).toggleClass('success alert');
+    var that = this;
     var options = {
       url: '/api/items/'+itemId,
       type: 'put' ,
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       dataType: 'json' ,
       data: {loan_status: "reserved"}
-    }
-    // var status = "reserved"
-    // $.post('/items', item.loan_status);
+    };
+
     $.ajax(options).done(function(data){
       console.log(data);
-    })
-  })
+      $(that).text('Reserved');
+    });
+  });
+
   $('.alert').on('click',function(){
-    $(this).toggleClass('alert success')
+    $(this).toggleClass('alert success');
+    var that = this;
     var itemId= $(this).data('id');
     var options = {
       url: '/api/items/'+itemId,
@@ -65,11 +97,12 @@
       // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       dataType: 'json' ,
       data: {loan_status: "available"}
-    }
+    };
+
     $.ajax(options).done(function(data){
-      $(this).append('<p>This Item is reserved</p>');
-    })
-  })
+      $(that).text('Reserve It');
+    });
+  });
 </script>
 
 <!-- <#%= form_tag 'action="/email/<%#= @item.id %>"', method: 'post' do %> -->

@@ -52,7 +52,6 @@ class ItemsController < ApplicationController
 
   def search
     @match = Item.all
-    @items = Item.paginate(:page => params[:page], :per_page => 5)
     if @item.save
       redirect_to '/items', notice: 'items list'
     else

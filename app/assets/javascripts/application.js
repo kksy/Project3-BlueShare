@@ -28,6 +28,8 @@
 
 //= require imageLoaded 
 
+//= require lightslider
+
 // load foundation
 $(document).ready(function() {
 	$(document).foundation();
@@ -37,7 +39,7 @@ $(document).ready(function() {
     loop: true,
     slideMargin: 0,
     thumbItem: 9
-});
+  });
 });
 
 //= require turbolinks

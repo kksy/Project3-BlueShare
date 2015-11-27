@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require lightslider
  *= require_tree .
  *= require_self
 
@@ -98,23 +99,32 @@ p {
   margin-left: 10px;
 }
 
-.container > div {
-display: inline-block;
-width: 49%;
-height: 100vh;
-vertical-align: top;
+
+.item-details p {
+  color: black;
+  font-size: 1em;
+  border: 1px solid black;
 }
 
-.sidebar {
-  overflow: scroll;
+.pagination>.current {
+    font-size: 1.5em;
+    background-color: lightsalmon;
+    border-radius: 4px;
 }
 
+// .container > .map {
+// display: inline-block;
+// width: 49%;
+// height: 100vh;
+// vertical-align: top;
+// }
 
-.load-more {
-  cursor: pointer;
-}
+// .searched-items {
+//   overflow: scroll;
+// }
 
 
+/* slider */
 .demo {
     width:100%;
     ul {

@@ -9,9 +9,13 @@
 
 class UsersController < ApplicationController
   def home
+    if logged_in?
     @listings = Item.where(user_id: current_user.id)
     # @borrowed = Item.where(borrower_id: current_user.id, loan_status: 'onloan')
     render :user_profile
+  else
+    redirect_to user_path
+  end
   end
 
   def edit
@@ -31,7 +35,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    render :new_profile
+    if logged_in?
+      redirect_to user_path
+    else
+      render :new_profile
+    end
+
   end
 
   def create
