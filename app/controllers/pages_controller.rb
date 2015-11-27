@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     else
       redirect_to '/'
     end
-    @result = @result.paginate(:page => params[:page], per_page: 5)
+    @result = @result.paginate(:page => params[:page], per_page: 8)
   end
 
 end

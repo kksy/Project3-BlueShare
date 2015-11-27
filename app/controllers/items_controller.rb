@@ -36,18 +36,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-  if Item.find_by(id: params[:id])
-    @item = Item.find(params[:id])
-    @owner = @item.user_id
-    if !current_user.nil? && @owner == current_user.id
-      @is_owner = true
+
+    if Item.find_by(id: params[:id])
+      @item = Item.find(params[:id])
+      @owner = @item.user_id
+      if !current_user.nil? && @owner == current_user.id
+        @is_owner = true
     end
 
-  else
-    redirect_to '/'
+    else
+      redirect_to '/'
+    end
+  
   end
-  end
-
 
 
   def item_params

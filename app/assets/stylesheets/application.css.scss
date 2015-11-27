@@ -112,6 +112,28 @@ p {
     border-radius: 4px;
 }
 
+
+
+
+footer {
+  background-color: #080808;
+  color: white;
+  border-top: 4px dashed;
+  p {
+    color: #D6E5F5;
+    font-size: 13px;
+  }
+  i {
+    color: white;
+  }
+}
+
+.mapper {
+  overflow: auto;
+  height: 100vh;
+}
+
+
 // .container > .map {
 // display: inline-block;
 // width: 49%;
@@ -152,8 +174,6 @@ p {
 }
 
 // .gutter-sizer { width: 4%; }
-
-/* media queries */
 
 /* for masonry */
 @media screen and (min-width: 500px) {
