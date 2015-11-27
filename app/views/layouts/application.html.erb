@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcjiczqLznu4O0xFf8NAHvc-ikR1xG1o"></script>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -34,7 +35,7 @@
   	          <ul class="dropdown">
   	            <li><a href="<%= user_path %>">Go to Profile</a></li>
                 <%= form_tag "/logout", method: 'delete' do %>
-                  <li><button>Logout</button></li>
+                  <li><a href=""><button class="button">Logout</button></a></li>
                 <% end %>
                 <li class="active"><a href="<%= edit_profile_path %>">Edit Profile</a></li>
   	         </ul>

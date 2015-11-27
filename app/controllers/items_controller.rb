@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.location = params[:location].to_i
     @item.update(item_params)
-    redirect_to '/user' 
+    redirect_to '/user'
   end
 
   def destroy
@@ -36,25 +36,26 @@ class ItemsController < ApplicationController
   end
 
   def show
+
     if Item.find_by(id: params[:id])
       @item = Item.find(params[:id])
       @owner = @item.user_id
       if !current_user.nil? && @owner == current_user.id
         @is_owner = true
-      end
+    end
 
     else
       redirect_to '/'
     end
+  
   end
-
 
 
   def item_params
     params.require(:item).permit(:title, :price, :loan_status)
   end
 
-  
+
   def search
     @match = Item.all
     if @item.save
@@ -63,5 +64,4 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
 end

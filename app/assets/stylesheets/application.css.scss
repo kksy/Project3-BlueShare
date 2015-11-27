@@ -100,10 +100,33 @@ p {
 }
 
 
+.item-details p {
+  color: black;
+  font-size: 1em;
+  border: 1px solid black;
+}
+
+.pagination>.current {
+    font-size: 1.5em;
+    background-color: lightsalmon;
+    border-radius: 4px;
+}
+
+// .container > .map {
+// display: inline-block;
+// width: 49%;
+// height: 100vh;
+// vertical-align: top;
+// }
+
+// .searched-items {
+//   overflow: scroll;
+// }
+
+
 /* slider */
 .demo {
     width:100%;
-
     ul {
     list-style: none outside none;
     padding-left: 0;

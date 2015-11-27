@@ -73,7 +73,19 @@
 	    </div>
 	  </div>
 
+		<% if logged_in? %>
 	  <button class="button right">Upload Image &raquo;</button>
+
+		<% else %>
+		<button data-reveal-id="myModal" class="button right">Upload Image &raquo;</button>
+
+		<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	  <h2 id="modalTitle">Please loggin first!</h2>
+	  <p class="lead">If new user, then please signup</p>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+	<% end %>
 	<% end %>
 	</div>
+</div>
 </div>
