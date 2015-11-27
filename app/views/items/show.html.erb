@@ -22,7 +22,7 @@
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
-    <p>postcode: <%= @item.city %></p>
+    <p>city: <%= @item.city %></p>
 
     <% if logged_in? %>
         <button id="reservation-btn" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
@@ -39,8 +39,8 @@
 
     <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Not logged in</h2>
-     <p class="lead">If you are a user than please login first.</p>
-     <p class="lead">If not a user than please signup.</p>
+     <p class="lead">If you are a user then please login first.</p>
+     <p class="lead">If not a user then please signup.</p>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <% end %>
