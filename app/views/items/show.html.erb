@@ -4,7 +4,7 @@
     <div class="demo">
       <ul id="lightSlider">
         <% @item.item_images.each do |image| %>
-          <% if image[:image_path].nil? %> 
+          <% if image[:image_path].nil? %>
             <li data-thumb="<%= image.image_path_backup %>">
               <img src="<%= image.image_path_backup %>" alt="">
             </li>
@@ -17,23 +17,48 @@
       </ul>
     </div>
   </div>
-  
+
   <!-- INFO SIDEBAR -->
   <div class="medium-4 columns highlighted-info">
     <h2><%= @item.title %></h2>
     <h4>$<%= @item.price %></h4>
     <p>postcode: <%= @item.city %></p>
-    <button id="reservation-btn" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
+
+    <% if logged_in? %>
+        <button id="reservation-btn" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round <%= 'disabled' if @is_owner %>" data-id="<%= @item.id %>"><%= @item.loan_status == 'available'? 'Reserve It' : 'Reserved' %></button>
+
+    <% else %>
+    <a href="<%= login_path %>" class="button <%= @item.loan_status == 'available'? 'success' : 'alert' %> expand round" data-id="<%= @item.id %>">Reserve Item</a>
+    <% end %>
+
+    <% if logged_in? %>
     <a href="#" data-reveal-id="myModal"><button class="button expand round <%= 'disabled' if @is_owner %>">Contact</button></a>
+
+    <% else %>
+    <a href="#" data-reveal-id="myModal"><button class="button expand round">Contact</button></a>
+
+    <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Not logged in</h2>
+     <p class="lead">If you are a user than please login first.</p>
+     <p class="lead">If not a user than please signup.</p>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <% end %>
+    
+  </div>
   </div>
 </div>
 
+<hr>
+
 <!-- ITEM DETAILS -->
-<div class="row">
-  <div class="medium-8 columns">
+<div class=" row">
+  <div class="item-details medium-8 columns">
     <p><%= @item.item_details %></p>
   </div>
 </div>
+
+
 
 <!-- MODAL -->
 <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -67,7 +92,7 @@
       console.log(this);
       var itemId= $(this).data('id');
       $(this).toggleClass('success alert');
-      
+
       var options = {
         url: '/api/items/' + itemId,
         type: 'put' ,
@@ -81,7 +106,7 @@
       console.log(this);
       $(this).toggleClass('alert success');
       var itemId= $(this).data('id');
-      
+
       var options = {
         url: '/api/items/' + itemId,
         type: 'put',

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcjiczqLznu4O0xFf8NAHvc-ikR1xG1o"></script>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   </head>
 
   <body>
@@ -34,7 +35,7 @@
   	          <ul class="dropdown">
   	            <li><a href="<%= user_path %>">Go to Profile</a></li>
                 <%= form_tag "/logout", method: 'delete' do %>
-                  <li><button>Logout</button></li>
+                  <li><a href=""><button class="button">Logout</button></a></li>
                 <% end %>
                 <li class="active"><a href="<%= edit_profile_path %>">Edit Profile</a></li>
   	         </ul>
@@ -48,14 +49,30 @@
 
 	    <!-- Left Nav Section -->
 	    <ul class="left">
-	      <li class="has-form">
-				  <div class="row collapse">
-				    </div>
-				  </div>
-				</li>
+	      <li><a href="#" data-reveal-id="myModal">About</a></li>
 	    </ul>
 	  </section>
 	</nav>
+
+  <!-- MODAL -->
+  <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">About</h2>
+    <div class="row">
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-laptop"></i></h2>
+        <p>AGRA SHARE is a platform for sharing agricultural producst. Lenders can create a listing for their items, upload images, set a price and change the loan status.</p>
+      </div>
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-laptop"></i></h2>
+        <p>Borrowers can view the listing, reserve the item and contact the lender.</p>
+      </div>
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-laptop"></i></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maiores alias ea sunt facilis impedit fuga dignissimos illo quaerat iure in nobis id quos, eaque nostrum! Unde, voluptates suscipit repudiandae!</p>
+      </div>
+    </div>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
 
     <%= yield %>
 

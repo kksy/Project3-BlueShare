@@ -3,7 +3,6 @@
 class PagesController < ApplicationController
   def home
     @items = Item.all
-
   end
 
   def about
@@ -31,12 +30,12 @@ class PagesController < ApplicationController
     elsif params[:search_location_input].empty? || !params[:search_input].nil?
 
       @query = params[:search_input]
-      @result = Item.where("city LIKE ?", "%#{@query}%")
+      @result = Item.where("city LIKE ?", "%#{@query}%") #.paginate(:page => params[:page], per_page: 5)
 
     else
       redirect_to '/'
     end
-
+    @result = @result.paginate(:page => params[:page], per_page: 5)
   end
 
 end

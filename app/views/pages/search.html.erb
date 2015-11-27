@@ -17,13 +17,12 @@
 </form>
 
 
-<!-- GOOGLE MAP -->
+<div class="container">
 <div class="page-layout">
 
-  
-  
+
   <div class="map-container">
-   
+
           </div>
     <div class="small-12 large-6 columns">
 
@@ -32,7 +31,6 @@
 
     </div>
   </div>
-
 <!-- SEARCH RESULTS -->
 <div class="searched-items">
   <div id="result-box" class="small-12 large-6 columns">
@@ -44,7 +42,7 @@
       <div data-id="<%= item.id %>" class="small-4 columns ">
         <% if ItemImage.find_by(item_id: item.id) %>
           <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
-            <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+            <a href="/items/<%= item.id %>"><img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>"></a>
           <% else %>
             <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
           <% end %>
@@ -65,15 +63,16 @@
     <% end %>
   </div>
 </div>
-
 </div>
 
-
+</div>
+</div>
+<%= will_paginate @result %>
 <!-- JavaScript for map -->
 
 <script>
 
- 
+
 $(document).ready(function(){
   var map = new google.maps.Map($('.map')[0],{
     zoom:5,
@@ -106,6 +105,7 @@ $(document).ready(function(){
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.');
   }
+})
 
   // console.log($('div#lng').data('id'))
   $('h5.location').each(function(i, obj) {
@@ -140,17 +140,14 @@ $(document).ready(function(){
       var infowindow2 = new google.maps.InfoWindow({
       content: contentString
       });
-      
+
 
       marker.addListener('click', function() {
       infowindow2.open(map, marker);
     });
 
-    
-  })
-  
 
-})
+});
 
 // });
 
