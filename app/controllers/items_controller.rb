@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     if Item.find_by(id: params[:id])
       @item = Item.find(params[:id])
       @owner = @item.user_id
-      if @owner == current_user.id
+      if !current_user.nil? && @owner == current_user.id
         @is_owner = true
       end
 
