@@ -90,7 +90,7 @@ p {
 .hero h1 {
   color: white;
   text-shadow: 2px 2px 2px black;
-  font-size: 6em;
+  font-size: 4em;
 }
 
 /* status */
@@ -184,11 +184,17 @@ section.hero {
 @media screen and (min-width: 500px) {
   /* 1 column for smaller screens */
   .grid-sizer, .grid-item { width: 50%; }
+
 }
 
 @media screen and (min-width: 900px) {
   /* 3 columns for larger screens */
   .grid-sizer, .grid-item { width: 33.33333%; }
+  .hero {
+    h1 {
+      font-size: 6em;
+    }
+  }
 }
 
 @media screen and (min-width: 1200px) {
