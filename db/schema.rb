@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20151126054239) do
     t.float    "price"
     t.integer  "report"
     t.integer  "user_id"
+    t.string   "location"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "borrower_id"

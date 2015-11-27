@@ -2185,5 +2185,5 @@ def create_items_images(item_id, user_id, img_list3)
     image.save
     end
 end
-create_users(1, australia_cities, image_list, name_list)
+create_users(5, australia_cities, image_list, name_list)
 
