@@ -6,6 +6,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    if !logged_in?
+      redirect_to '/login'
+    end
   end
 
   def create
@@ -42,7 +45,7 @@ class ItemsController < ApplicationController
       @owner = @item.user_id
       if !current_user.nil? && @owner == current_user.id
         @is_owner = true
-    end
+      end
 
     else
       redirect_to '/'

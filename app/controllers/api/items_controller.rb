@@ -1,7 +1,7 @@
 class Api::ItemsController < ApplicationController
 
   def index
-    # get params from /dishes?page=1
+    # get params from /pages?page=1
     # to make page iterate by 1, I made it so that at page=1, the offset is 0, but succeeding page numbers will have an offset multiplied by the limit(number of more items to be loaded)
     @limit = 4
     if params[:page].nil?
@@ -23,7 +23,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-
+    
   end
 
   def update
