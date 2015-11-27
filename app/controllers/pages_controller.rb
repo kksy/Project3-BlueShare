@@ -2,7 +2,8 @@
 
 class PagesController < ApplicationController
   def home
-    @items = Item.all
+    # @items = Item.all
+    @items = Item.all.order('created_at DESC').take(8)
   end
 
   def about
