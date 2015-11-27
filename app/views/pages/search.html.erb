@@ -20,6 +20,17 @@
 <div class="container">
 <div class="page-layout">
 
+
+  <div class="map-container">
+
+          </div>
+    <div class="small-12 large-6 columns">
+
+    	<div class="map" style='width: 100%; height: 600px;'>
+
+
+    </div>
+  </div>
 <!-- SEARCH RESULTS -->
 <div class="searched-items">
   <div id="result-box" class="small-12 large-6 columns">
@@ -27,22 +38,8 @@
     <div class="add-result-box">
 
     <% @result.each do |item| %>
-<!-- -------------------------- -->
-   <!--  <div id='cover_image' data-id="<%= item.id%>" class="small-4 columns"></div>
-    <div class="small-5 columns">
-      <a href="#"><h5><%#= item.title %></h5></a>
-      <p>$<%#= item.item_details %></p>
-    </div>
-    <div class="small-3 columns">
-      <h5>$<%#= item.price %></h5>
-      <p><%#= item.city %></p>
-      <p><%#= item.loan_status %></p>
-    </div>
-    <hr>
-  <%# end %> -->
-<!-- ------------------------- -->
-      <!-- <div id='cover_image' data-id="<%#= item.id%>" class="small-4 columns"></div> -->
-      <div class="small-4 columns">
+
+      <div id="itemID" data-id="<%= item.id %>" class="small-4 columns">
         <% if ItemImage.find_by(item_id: item.id) %>
           <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
             <a href="/items/<%= item.id %>"><img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>"></a>
@@ -53,8 +50,8 @@
           <p>no image</p>
         <% end %>
       </div>
-      <div class="small-5 columns">
-        <a href="#"><h5><%= item.title %></h5></a>
+      <div  class="small-5 columns">
+        <a href="#"><h5 id="location" data-id="<%= [item.lat, item.lng] %>"><%= item.title %></h5></a>
         <p><%= item.item_details %></p>
       </div>
       <div class="small-3 columns">
@@ -65,14 +62,6 @@
       <hr>
     <% end %>
   </div>
-
-</div>
-</div>
-
-<!-- GOOGLE MAP -->
-<div class="small-12 large-6 columns">
-  <div class="map" style='width: 800px; height: 600px;'>
-
 </div>
 </div>
 
@@ -82,6 +71,7 @@
 <!-- JavaScript for map -->
 
 <script>
+
 
 $(document).ready(function(){
   var map = new google.maps.Map($('.map')[0],{
@@ -117,6 +107,55 @@ $(document).ready(function(){
   }
 })
 
+  // console.log($('div#lng').data('id'))
+  $('h5#location').each(function(i, obj) {
+    // $('<div>').append($('#item-of-interest').clone()).html();
+      var htmlString = $( this ).html();
+      n = $( this ).text( htmlString ).attr('data-id')
+      // var array =[n]
+      // console.log()
+      var array = JSON.parse("[" + n + "]");
+      var marker = new google.maps.Marker({
+      position: {lat: parseFloat(array[0][0]), lng: parseFloat(array[0][1]) },
+      map: map,
+      title: $( this ).text()
+      });
+        console.log($('div#itemID').html())
+        var temp = $('div#itemID').html()
+        // q = $('div#itemID').text(temp).attr('data-id')
+        // console.log(q)
+        var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Need Title</h1>'+
+      '<div id="bodyContent">'+
+      '<p>Need an item desciption ' +
+      '</p>'+
+      "<p> <a href="+ /items/ +">"+
+      '</a> '+
+      '</p>'+
+      '</div>'+
+      '</div>';
+
+      var infowindow2 = new google.maps.InfoWindow({
+      content: contentString
+      });
+
+
+      marker.addListener('click', function() {
+      infowindow2.open(map, marker);
+    });
+
+
+});
+
+// });
+
+
+
+
+
+// $('div#lng').data('id')
   // var options = {
   //   url: 'http:/localhost:3000/api/items',
   //   type: 'get',
