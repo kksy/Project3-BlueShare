@@ -21,38 +21,40 @@
 
   </div>
 </section>
-<div class="large-8 large-centered columns">
-<!-- TILES -->
-<div id="masonry-grid">
-  <div class="grid-sizer"></div>
- <!--  <div class="gutter-sizer"></div> -->
-  <% @items.each do |item| %>
-    <div class="grid-item">
-      <div class="tile">
-        <div class="item-img">
-            <% if ItemImage.find_by(item_id: item.id) %>
-              <a href="#">
-                <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
-                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+<div class="row">
+  <div id="masonry-grid">
+  <!-- TILES -->
+    <div class="grid-sizer"></div>
+     <!--  <div class="gutter-sizer"></div> -->
+      <% @items.each do |item| %>
+        <div class="grid-item">
+          <div class="tile">
+            <div class="item-img">
+                <% if ItemImage.find_by(item_id: item.id) %>
+                  <a href="#">
+                    <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
+                      <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
+                    <% else %>
+                      <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+                    <% end %>
+                  </a>
                 <% else %>
-                  <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+                  <p>no image</p>
                 <% end %>
-              </a>
-            <% else %>
-              <p>no image</p>
-            <% end %>
-            <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
+                <a id="cover_image" data-id="<%= item.id%>" href="#"></a>
+            </div>
+            <a href="#"><h3><%= item.title %></h3></a>
+            <h5>$<%= item.price %></h5>
+            <p><%= item.city %></p>
+            <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
+            <a class="button expand view-listing" href="/items/<%= item.id %>">View Listing</a>
+          </div>
         </div>
-        <a href="#"><h3><%= item.title %></h3></a>
-        <h5>$<%= item.price %></h5>
-        <p><%= item.city %></p>
-        <h5 class="<%= item.loan_status == 'available'? 'available' : 'onloan'  %>"><%= item.loan_status %></h5>
-        <a class="button expand view-listing" href="/items/<%= item.id %>">View Listing</a>
-      </div>
+      <% end %>
     </div>
-  <% end %>
   </div>
 </div>
+
 <script>
 
 // var options1 = {
