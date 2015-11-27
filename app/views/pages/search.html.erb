@@ -41,7 +41,7 @@
 
     <% @result.each do |item| %>
 
-      <div id="itemID" data-id="<%= item.id %>" class="small-4 columns">
+      <div data-id="<%= item.id %>" class="small-4 columns ">
         <% if ItemImage.find_by(item_id: item.id) %>
           <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
             <img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>">
@@ -53,7 +53,7 @@
         <% end %>
       </div>
       <div  class="small-5 columns">
-        <a href="#"><h5 id="location" data-id="<%= [item.lat, item.lng] %>"><%= item.title %></h5></a>
+        <a href="#"><h5 class="location" data-id="<%= [item.lat, item.lng] %>"><%= item.title %></h5></a>
         <p><%= item.item_details %></p>
       </div>
       <div class="small-3 columns">
@@ -90,7 +90,7 @@ $(document).ready(function(){
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('Your locaiton.');
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -108,7 +108,7 @@ $(document).ready(function(){
   }
 
   // console.log($('div#lng').data('id'))
-  $('h5#location').each(function(i, obj) {
+  $('h5.location').each(function(i, obj) {
     // $('<div>').append($('#item-of-interest').clone()).html();
       var htmlString = $( this ).html();
       n = $( this ).text( htmlString ).attr('data-id')
@@ -120,14 +120,14 @@ $(document).ready(function(){
       map: map,
       title: $( this ).text()
       });
-        console.log($('div#itemID').html())
+        console.log($(this).closest('div.itemID').html())
         var temp = $('div#itemID').html()
         // q = $('div#itemID').text(temp).attr('data-id')
         // console.log(q)
         var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Need Title</h1>'+
+      "<h1 id='firstHeading' class='firstHeading'>" + $( this ).text()+"</h1>"+
       '<div id="bodyContent">'+
       '<p>Need an item desciption ' +
       '</p>'+
