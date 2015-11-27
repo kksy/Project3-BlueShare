@@ -32,7 +32,7 @@
 
     <% @result.each do |item| %>
 
-      <div data-id="<%= item.id %>" class="small-4 columns ">
+      <div id="itemID" data-id="<%= item.id %>" class="small-4 columns ">
         <% if ItemImage.find_by(item_id: item.id) %>
           <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
             <a href="/items/<%= item.id %>"><img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>"></a>
@@ -44,7 +44,7 @@
         <% end %>
       </div>
       <div  class="small-5 columns">
-        <a href="#"><h5 class="location" data-id="<%= [item.lat, item.lng] %>"><%= item.title %></h5></a>
+        <a href="#"><h5 class="location" data-me="<%= item.id %>" data-id="<%= [item.lat, item.lng] %>"><%= item.title %></h5></a>
         <p><%= item.item_details %></p>
       </div>
       <div class="small-3 columns">
@@ -60,7 +60,9 @@
 
 </div>
 </div>
-  <%= will_paginate @result %>
+
+<%#= will_paginate @result %>
+
 <!-- JavaScript for map -->
 
 <script>
@@ -98,7 +100,7 @@ $(document).ready(function(){
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.');
   }
-})
+
 
   // console.log($('div#lng').data('id'))
   $('h5.location').each(function(i, obj) {
@@ -113,8 +115,8 @@ $(document).ready(function(){
       map: map,
       title: $( this ).text()
       });
-        console.log($(this).closest('div.itemID').html())
-        var temp = $('div#itemID').html()
+        var itemID = $( this ).text( htmlString ).attr('data-me')
+        // var temp = $('div#itemID').html()
         // q = $('div#itemID').text(temp).attr('data-id')
         // console.log(q)
         var contentString = '<div id="content">'+
@@ -124,7 +126,7 @@ $(document).ready(function(){
       '<div id="bodyContent">'+
       '<p>Need an item desciption ' +
       '</p>'+
-      "<p> <a href="+ /items/ +">"+
+      "<p> <a href="+ '/items/'+itemID +"> See listing"+
       '</a> '+
       '</p>'+
       '</div>'+
@@ -139,7 +141,7 @@ $(document).ready(function(){
       infowindow2.open(map, marker);
     });
 
-
+})
 });
 
 // });

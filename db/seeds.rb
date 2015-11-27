@@ -2153,7 +2153,7 @@ def create_users(nubmer_of_users, australia_cities, img_list1, name_list)
 end
 
 def create_items(user_id, city, postcode ,img_list2, name_list)
-  for j in 0..9
+  for j in 0..1
     include Geokit::Geocoders
     city_list = []
     item = Item.new
@@ -2176,7 +2176,7 @@ def create_items(user_id, city, postcode ,img_list2, name_list)
 end
 
 def create_items_images(item_id, user_id, img_list3)
-  for k in 1..5
+  for k in 1..1
     image = ItemImage.new
     # image.image_path = 'http://placehold.it/350x150'
     image.image_path_backup = img_list3.sample
@@ -2185,5 +2185,5 @@ def create_items_images(item_id, user_id, img_list3)
     image.save
     end
 end
-create_users(50, australia_cities, image_list, name_list)
+create_users(1, australia_cities, image_list, name_list)
 

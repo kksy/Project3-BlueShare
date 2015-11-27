@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcjiczqLznu4O0xFf8NAHvc-ikR1xG1o"></script>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -46,15 +46,13 @@
           <% end %>
 	        <li class="active"><a href="<%= new_item_path	 %>">Create Listing</a></li>
 	    </ul>
-
-	    <!-- Left Nav Section -->
-	    <ul class="left">
-	      <li><a href="#footer" data-reveal-id="myModal">About</a></li>
-	    </ul>
 	  </section>
 	</nav>
 
     <%= yield %>
+
+
+
 
 <% if request.path == "/search" %>
 

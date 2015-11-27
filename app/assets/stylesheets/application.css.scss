@@ -21,7 +21,7 @@ $primary-colour: #008CBA;
 
 /* hero */
 .hero {
-  // background: url(image-path('blue-gradient.jpg')) no-repeat center center;
+  background: url(image-path('blue-gradient.jpg')) no-repeat center center;
   // http://bizonagro.ru/media/upload/68213d6d-c88f-466d-a40d-8f8bd6b2fa83.JPG
   background: url(image-path('truck.JPG')) no-repeat center center;
   background-size: cover;
@@ -85,6 +85,13 @@ p {
 	margin-top: 20px;
 }
 
+// home hero h1 text
+.hero h1 {
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 6em;
+}
+
 /* status */
 .onloan {
 	color: red;
@@ -133,17 +140,6 @@ footer {
 }
 
 
-// .container > .map {
-// display: inline-block;
-// width: 49%;
-// height: 100vh;
-// vertical-align: top;
-// }
-
-// .searched-items {
-//   overflow: scroll;
-// }
-
 
 /* slider */
 .demo {
@@ -165,6 +161,15 @@ footer {
         max-width: 100%;
     }
 
+}
+
+section.hero {
+    box-shadow: 2px 2px 2px;
+}
+
+.search-top {
+    background-color: #D3BFAF;
+    margin-top: -20px;
 }
 
 /* masonry css */
