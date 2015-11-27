@@ -16,6 +16,14 @@ class SessionController < ApplicationController
     # e.save
   end
 
+  def login
+    if !logged_in?
+      render :login
+    else
+      redirect_to '/'
+    end
+  end
+
   # def login
   #   user = User.find_by(email: params[:email])
   #
