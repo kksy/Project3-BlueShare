@@ -32,12 +32,12 @@
 
     <% @result.each do |item| %>
 
-      <div id="itemID" data-id="<%= item.id %>" class="small-4 columns ">
+      <div class="small-4 columns ">
         <% if ItemImage.find_by(item_id: item.id) %>
           <% if ItemImage.find_by(item_id: item.id)[:image_path].nil? %>
-            <a href="/items/<%= item.id %>"><img src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>"></a>
+            <a href="/items/<%= item.id %>"><img id="<%= item.id %>" src="<%= ItemImage.find_by(item_id: item.id).image_path_backup %>"></a>
           <% else %>
-            <img src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
+            <img id="<%= item.id %>" src="<%= ItemImage.find_by(item_id: item.id).image_path %>">
           <% end %>
         <% else %>
           <p>no image</p>
@@ -116,14 +116,20 @@ $(document).ready(function(){
       title: $( this ).text()
       });
         var itemID = $( this ).text( htmlString ).attr('data-me')
+        console.log($("#"+itemID+'')[0].src)
+        var image_url = $("#"+itemID+'').prop('src')
+        console.log(image_url)
+
+        // console.log($('img')[0].src)
         // var temp = $('div#itemID').html()
         // q = $('div#itemID').text(temp).attr('data-id')
-        // console.log(q)
+        // console.log(itemID)
         var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
       "<h1 id='firstHeading' class='firstHeading'>" + $( this ).text()+"</h1>"+
       '<div id="bodyContent">'+
+      "<img src='"+image_url+"'style='width: 26%; '/>" +
       '<p>Need an item desciption ' +
       '</p>'+
       "<p> <a href="+ '/items/'+itemID +"> See listing"+
