@@ -26,11 +26,12 @@
 
 //= require masonry
 
-//= require imageLoaded 
+//= require imageLoaded
 
 //= require lightslider
 
 // load foundation
+
 $(document).ready(function() {
 	$(document).foundation();
 	$('#lightSlider').lightSlider({
@@ -53,6 +54,7 @@ $(document).ready( function() {
       percentPosition: true,
       columnWidth: '.grid-sizer'
       // gutter: '.gutter-sizer'
-    }); 
+    });
 	});
+
 });

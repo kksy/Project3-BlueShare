@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "BlueShare" %></title>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYcjiczqLznu4O0xFf8NAHvc-ikR1xG1o"></script>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/sachinchoolur/lightslider/master/src/css/lightslider.css">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -46,37 +46,34 @@
           <% end %>
 	        <li class="active"><a href="<%= new_item_path	 %>">Create Listing</a></li>
 	    </ul>
-
-	    <!-- Left Nav Section -->
-	    <ul class="left">
-	      <li><a href="#" data-reveal-id="myModal">About</a></li>
-	    </ul>
 	  </section>
 	</nav>
 
     <%= yield %>
 
+
+
+
 <% if request.path == "/search" %>
 
 <% else %>
 <footer>
-      <div class="rowi">
-        <div class="large-4 columns">
-          <h2 class="text-center"><i class="fi-laptop"></i></h2>
-          <p>AGRA SHARE is a platform for sharing agricultural producst. Lenders can create a listing for their items, upload images, set a price and change the loan status.</p>
-        </div>
-        <div class="large-4 columns">
-          <h2 class="text-center"><i class="fi-laptop"></i></h2>
-          <p>Borrowers can view the listing, reserve the item and contact the lender.</p>
-        </div>
-        <div class="large-4 columns">
-          <h2 class="text-center"><i class="fi-laptop"></i></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maiores alias ea sunt facilis impedit fuga dignissimos illo quaerat iure in nobis id quos, eaque nostrum! Unde, voluptates suscipit repudiandae!</p>
-        </div>
-        <div style="clear: both;">
-
-        </div>
+    <div id="footer" class="row">
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-share"></i></h2>
+        <p>AGRA SHARE is a platform for sharing agricultural producst. Lenders can create a listing for their items, upload images, set a price and change the loan status.</p>
       </div>
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-bookmark"></i></h2>
+        <p>Borrowers can view the listing, reserve the item and contact the lender.</p>
+      </div>
+      <div class="large-4 columns">
+        <h2 class="text-center"><i class="fi-social-github"></i></h2>
+        <p>Created by Tobias Letcher, Asep Norzai, Ravi Chada and Kylie Sy. All images are not owned by us.</p>
+        <p>Github: <a href="https://github.com/kksy/Project3-BlueShare">https://github.com/kksy/Project3-BlueShare</a></p>
+      </div>
+      
+    </div>
 </footer>
 <% end %>
   </body>
