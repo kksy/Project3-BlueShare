@@ -2062,7 +2062,6 @@ image_list = ["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
  "http://previews.123rf.com/images/diyanski/diyanski1208/diyanski120800130/14857776-Agricultural-activities-modern-farm-equipment-in-field-Stock-Photo.jpg",
  "http://www.mdixonfarms.com/siteart/slides/1.jpg",
  "http://m.c.lnkd.licdn.com/mpr/mpr/p/8/005/0b5/375/0c89c0c.png",
- "http://farmingweek.com/sites/default/files/Agricultural%2520machinery.jpg",
  "https://agriculturalmachineryforfaming.files.wordpress.com/2013/07/15971007-agricultural-machinery-for-preparing-hay.jpg",
  "http://thumbs.dreamstime.com/x/agricultural-machinery-sowing-tractor-seeder-30489925.jpg",
  "http://www.nc-engineering.com/cms/wp-content/uploads/2013/04/Picture-26-Pulse-Jetter-Firing.jpg",
@@ -2076,13 +2075,69 @@ image_list = ["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
  "http://www.farm-equipment.com/ext/resources/images/Sitrex_QR_Range_V_Type_Rakes.jpg",
  "http://img.houss.us/medium/2/agricultural%2520machinery.jpg",
  "http://www.sitesthatmeanbusiness.com/wp-content/uploads/2015/06/Farming-Equipment.jpg",
- "http://img.bedroomidea.us/medium/4/farming%2520machines.jpg"]
+ "http://img.bedroomidea.us/medium/4/farming%2520machines.jpg",
+ "http://www.farm-king.com/imgs/application_equipment/ut/ut_sprayer-main.jpg",
+ "http://cropcareequipment.com/img/aboutUs.jpg",
+ "http://blog.cleveland.com/business_impact/2009/07/large_chemical-farm.jpg",
+ "http://lite-trac.com/farm-machinery/wp-content/themes/litetrac/images/sidebars/sprayer-4-b.jpg",
+ "http://cropcareequipment.com/img/trailerSprayers/300galSprayer/mainImage.jpg"]
+
+ name_list = ['tractor', 'sprayer', 'red tractor', 'new tractor', 'old tractor', 'havester', 'truck', 'flat bed truck','Bale lifter',
+'Bale wrapper',
+'Baler',
+'Hay rake',
+'Hay tedder',
+'Mower',
+'Loader wagon',
+'Allen Scythe',
+'Feed grinder',
+'Bale splitter',
+'Mixer-wagon ',
+'Chillcuring',
+'Conveyor analyzer',
+'Hedge cutter',
+'Hedge trimmer',
+'Livestock trailer',
+'Mulching machine',
+'Post driver',
+'Shear Grab',
+'Trailer',
+'Yard scraper',
+'Beet cleaner loader',
+'Buckrake',
+'Grain cart',
+'Conveyor belt',
+'Cotton picker',
+'Farm truck',
+'Grain dryer',
+'Harvestor',
+'Haulm topper',
+'Mechanical', 
+'Mower',
+'Rake',
+'Reaper-binder', 
+'Rice huller',
+'Swather',
+'Wagon',
+'Cultivator',
+'Dragged teeth',
+'Rotary', 
+'Cultipacker',
+'Chisel plow',
+'Harrow',
+'Plow', 
+'Stone',
+'Subsoiler',
+'Rotator',
+'Roller',
+'Strip till']
+
 
  image_list = image_list.uniq
 
 
 
-def create_users(nubmer_of_users, australia_cities, img_list1)
+def create_users(nubmer_of_users, australia_cities, img_list1, name_list)
     for i in 1..nubmer_of_users
     user = User.new
     # user.name = ['user', i].join('')
@@ -2093,18 +2148,18 @@ def create_users(nubmer_of_users, australia_cities, img_list1)
     user.profile_avatar = 'http://placehold.it/140x100'
     user.city = australia_cities.sample.downcase
     user.save
-    create_items(user.id, user.city, user.postcode, img_list1)
+    create_items(user.id, user.city, user.postcode, img_list1, name_list)
   end
 end
 
-def create_items(user_id, city, postcode ,img_list2)
+def create_items(user_id, city, postcode ,img_list2, name_list)
   for j in 0..9
     include Geokit::Geocoders
     city_list = []
     item = Item.new
     item.price = (200..500).to_a.sample.to_f
     # item.location = (3000..3400).to_a.sample
-    item.title = ['test', j].join('')
+    item.title = name_list.sample
     item.user_id = user_id
     item.city = city
     item.postcode = postcode
@@ -2130,5 +2185,5 @@ def create_items_images(item_id, user_id, img_list3)
     image.save
     end
 end
-create_users(5, australia_cities, image_list)
+create_users(50, australia_cities, image_list, name_list)
 

@@ -11,7 +11,6 @@ image_list =["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
  "http://previews.123rf.com/images/diyanski/diyanski1208/diyanski120800130/14857776-Agricultural-activities-modern-farm-equipment-in-field-Stock-Photo.jpg",
  "http://www.mdixonfarms.com/siteart/slides/1.jpg",
  "http://m.c.lnkd.licdn.com/mpr/mpr/p/8/005/0b5/375/0c89c0c.png",
- "http://farmingweek.com/sites/default/files/Agricultural%2520machinery.jpg",
  "https://agriculturalmachineryforfaming.files.wordpress.com/2013/07/15971007-agricultural-machinery-for-preparing-hay.jpg",
  "http://thumbs.dreamstime.com/x/agricultural-machinery-sowing-tractor-seeder-30489925.jpg",
  "http://www.nc-engineering.com/cms/wp-content/uploads/2013/04/Picture-26-Pulse-Jetter-Firing.jpg",
@@ -26,11 +25,16 @@ image_list =["https://media.licdn.com/mpr/mpr/p/8/005/095/1b8/37ef2e3.jpg",
  "http://www.farm-equipment.com/ext/resources/images/Sitrex_QR_Range_V_Type_Rakes.jpg",
  "http://img.houss.us/medium/2/agricultural%2520machinery.jpg",
  "http://www.sitesthatmeanbusiness.com/wp-content/uploads/2015/06/Farming-Equipment.jpg",
- "http://img.bedroomidea.us/medium/4/farming%2520machines.jpg"]
+ "http://img.bedroomidea.us/medium/4/farming%2520machines.jpg",
+ "http://www.farm-king.com/imgs/application_equipment/ut/ut_sprayer-main.jpg",
+ "http://cropcareequipment.com/img/aboutUs.jpg",
+ "http://blog.cleveland.com/business_impact/2009/07/large_chemical-farm.jpg",
+ "http://lite-trac.com/farm-machinery/wp-content/themes/litetrac/images/sidebars/sprayer-4-b.jpg",
+ "http://cropcareequipment.com/img/trailerSprayers/300galSprayer/mainImage.jpg"]
  
 
 for i in 0..10
-  image_path = suckr.get_image_url({"q" => "farm machine"})
+  image_path = suckr.get_image_url({"q" => "farm s"})
   if !image_list.include? image_path
     image_list << image_path
   end 
