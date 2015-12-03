@@ -4,9 +4,10 @@
 
 #### Description
 
-Agra share is a platform for users to rent out their agricultural equipment, especially the ones that are not used that often anymore, but they do not want to sell them. Users can
+Agra share is a platform for users to rent out their agricultural equipment, especially the ones that are not used that often anymore, but they do not want to sell them. Lenders can create a listing, upload an image and change the loan status. Borrowers can reserve the item and contact the lender through email.
 
-<b>Project Link:</b> https://stretchapp.herokuapp.com/
+<b>Project Link:</b> [http://agrashare.herokuapp.com](http://agrashare.herokuapp.com/)
+
 <b>Team Members:</b> Tobias Letcher, Asep Norzai, Ravi Chada, Kylie Sy
 
 #### Main Technologies
