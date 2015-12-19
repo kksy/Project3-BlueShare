@@ -7,6 +7,8 @@ Agra Share is a platform for users to rent out their agricultural equipment, esp
 This was a 5-day team project made during our Web Development Immersive Course at General Assembly
 
 <b>Live Demo:</b> [http://agrashare.herokuapp.com](http://agrashare.herokuapp.com/)
++ username: user1@example.com
++ password: password123
 
 ## Features
 
