@@ -22,14 +22,20 @@ This was a 5-day team project made during our Web Development Immersive Course a
 ## Technologies
 
 + Ruby on Rails
++ [Carrier Wave](https://github.com/carrierwaveuploader/carrierwave)
++ [Bcrypt](https://rubygems.org/gems/bcrypt-ruby/versions/3.1.5)
 + HTML
 + CSS/Sass
 + JavaScript, including
 	- jQuery
 	- Ajax
+	- [Masonry](http://masonry.desandro.com/)
+	- [lightSlider](https://github.com/sachinchoolur/lightslider)
 + Foundation Framework
 + PostgreSQL
-+ APIs: Google Maps API, SendGrid
++ API
+	- Google Maps API 
+	- SendGrid
 + Deployment: Heroku
 
 ## Known Issues
