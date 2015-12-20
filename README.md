@@ -38,6 +38,10 @@ This was a 5-day team project made during our Web Development Immersive Course a
 	- SendGrid
 + Deployment: Heroku
 
+## Database
+
+![alt text](public/img/project3-database.JPG?raw=true)
+
 ## Known Issues
 + Images are only stored temporarily in heroku
 + Footer in user profile page is merging with the tabs container
