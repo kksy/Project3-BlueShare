@@ -38,11 +38,24 @@ This was a 5-day team project made during our Web Development Immersive Course a
 	- SendGrid
 + Deployment: Heroku
 
-## Database
+## Planning and Execution
+
+<b>Trello</b> was used in order to plan and assign tasks to each team member. In addition to this, each morning, we would have a <b>stand-up meeting</b> to answer the following questions:
+
++ What did I do yesterday?
++ What am I working on now?
++ What are the obstacles and issues/ Which part do I need help on?
+
+#### Pages
+
+![alt text](public/img/project3-pages.JPG?raw=true)
+
+#### Database
 
 ![alt text](public/img/project3-database.JPG?raw=true)
 
-## Known Issues
+## Known Issues/ Future Improvements
+
 + Images are only stored temporarily in heroku
 + Footer in user profile page is merging with the tabs container
 + Some bugs with masonry
